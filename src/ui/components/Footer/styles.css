@@ -1,0 +1,79 @@
+:root {
+  --bgColor: #161719;
+  --issueColor: inherit;
+  --forkColor: inherit;
+  --langColor: inherit;
+  --packagesColor: #6494ed;
+  --syncColor: #73c990;
+  --updateColor: #6494ed;
+  --height: 3.0em;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  background-color: var(--bgColor);
+  height: var(--height);
+  border-top: 1px solid #27292c; /*rgba(115, 170, 100, 0.3);*/
+}
+
+.status_bar{
+  -webkit-user-select: none;
+  cursor: default;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: -webkit-min-content;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.75em;
+  width: 100%;
+  line-height: var(--height);
+}
+
+.status_bar_left{
+  & span {
+      margin: auto 10px;
+  }
+}
+
+.status_bar_right{
+
+  & span {
+      margin: auto 4px;
+      cursor: pointer;
+
+      & em {
+        font-style: normal;
+      }
+
+      & em:hover{
+        font-style: normal;
+        text-decoration: underline;
+      }
+  }
+}
+
+.status_bar_issue{
+  color: var(--issueColor);
+}
+
+.status_bar_fork{
+  color: var(--forkColor);
+}
+
+.status_bar_lang{
+  color: var(--langColor);
+}
+
+.status_bar_run{
+  color: var(--packagesColor);
+}
+
+.status_bar_sync{
+  color: var(--syncColor);
+}
+
+.status_bar_update{
+  color: var(--updateColor);
+}

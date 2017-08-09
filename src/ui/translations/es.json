@@ -1,0 +1,18 @@
+{
+  "octoql.components.Footer.license": "MIT",
+  "octoql.components.FuzzyFinder.notFound": "Sin resultados",
+  "octoql.components.HelperTour.footer.left.message": "Usa estas acciones  para acceder a la página principal o reportar errores",
+  "octoql.components.HelperTour.footer.right.message": "Usa estas acciones para cambiar el idioma de la aplicación, el diesño o para guardar sus notebooks",
+  "octoql.components.HelperTour.tree.message": "Desde esta área podrá acceder a todos sus notebooks organizados por nombre de usuario y repositorio",
+  "octoql.components.HomePage.help": "Descubre que puedes hacer pulsado",
+  "octoql.components.HomePage.subheader": "El lenguaje de dominio específico para Github",
+  "octoql.components.HomePage.header": "OctoQL",
+  "octoql.components.LanguageProvider.eng": "Inglés",
+  "octoql.components.LanguageProvider.es": "Español",
+  "octoql.components.NotFoundPage.header": "Notebook no encontrado",
+  "octoql.components.ResourcesTree.notebook.add": "Escriba el notebook que desea añadir con el siguiente formato <nombre_usuario|organización>/<repositorio>/<nombre_notebook> (i.e. tsur/octoql/notebook1). También puedes usar un URL de Github válida (i.e. https://github.com/tsur/octoql)",
+  "octoql.containers.App.actions.addNotebook": "Añadir Notebook",
+  "octoql.containers.App.actions.changeLang": "Cambiar Idioma",
+  "octoql.containers.App.actions.openNotebook": "Abrir Notebook",
+  "octoql.containers.WorkSpacePage.title": "Notebook"
+}
