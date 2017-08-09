@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+.gitconfig
+.npmrc
+coverage
+dist
+build
+.nyc_output
