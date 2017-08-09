@@ -1,9 +1,9 @@
 {
   "name": "octoql",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A Custom Query Language for fetching Github Issues",
   "author": "Zuri Pabon <zurisadai.pabon@gmail.com>",
-  "license": "GNU",
+  "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
