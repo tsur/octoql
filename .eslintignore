@@ -1,0 +1,17 @@
+# Don't check auto-generated stuff into git
+coverage
+build
+dist
+node_modules
+stats.json
+
+# Cruft
+.DS_Store
+npm-debug.log
+.gitconfig
+.npmrc
+.nyc_output
+.idea
+
+# App
+src/dsl/parser.js
