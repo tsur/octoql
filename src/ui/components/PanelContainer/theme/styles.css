@@ -1,0 +1,49 @@
+
+/**
+ * "
+ *  Using Zenburn color palette from the Emacs Zenburn Theme
+ *  https://github.com/bbatsov/talo-emacs/blob/master/talo-theme.el
+ *
+ *  Also using parts of https://github.com/xavi/coderay-lighttable-theme
+ * "
+ * From: https://github.com/wisenomad/talo-lighttable-theme/blob/master/talo.css
+ */
+
+ /* Style active line */
+.cm-s-talo .CodeMirror-activeline { background: #161719 !important; }
+ /* Style active line number */
+.cm-s-talo .CodeMirror-activeline .CodeMirror-activeline-gutter .CodeMirror-linenumber { color: #DDD; background: #161719 !important; }
+/* Line number */
+.cm-s-talo { height: 100%; font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace; }
+.cm-s-talo .CodeMirror-selectedtext { background-color: rgba(115, 201, 144, 0.7) !important; color: rgba(0 ,0, 0, 1) !important; }
+.cm-s-talo .CodeMirror-selected { background-color: transparent !important;}
+.cm-s-talo .CodeMirror-lines { padding: 0; }
+.cm-s-talo .CodeMirror-gutter-wrapper { z-index:2; }
+.cm-s-talo .CodeMirror-gutters { z-index:1; background: #27292c !important; border-right: 0;/*border-right: 1px solid #27292c;*/ }
+.cm-s-talo .CodeMirror-linenumber { padding: 0 3px 0 7px; font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace; color: rgba(200 ,200, 200, 0.3); text-align: center;}
+.cm-s-talo .CodeMirror-foldgutter-open, .CodeMirror-foldgutter-folded { color: #999; }
+.cm-s-talo .CodeMirror-cursor { border-left: 1px solid rgba(255, 255, 255, 0.6); }
+.cm-s-talo { background-color: transparent; color: #dcdccc; }
+.cm-s-talo span.cm-builtin { color: #dcdccc; font-weight: bold; }
+.cm-s-talo span.cm-comment { color: #73c990; }
+.cm-s-talo span.cm-keyword { color: rgb(226, 192, 141); font-weight: bold; }
+.cm-s-talo span.cm-atom { color: #bfebbf; }
+.cm-s-talo span.cm-def { color: #dcdccc; }
+.cm-s-talo span.cm-variable { color: #dfaf8f; }
+.cm-s-talo span.cm-variable-2 { color: #dcdccc; }
+.cm-s-talo span.cm-string { color: #cc9393; }
+.cm-s-talo span.cm-string-2 { color: #cc9393; }
+.cm-s-talo span.cm-number { color: #dcdccc; }
+.cm-s-talo span.cm-tag { color: #93e0e3; }
+.cm-s-talo span.cm-property { color: #dfaf8f; }
+.cm-s-talo span.cm-attribute { color: #dfaf8f; }
+.cm-s-talo span.cm-qualifier { color: #7cb8bb; }
+.cm-s-talo span.cm-meta { color: rgb(226, 192, 141); }
+.cm-s-talo span.cm-header { color: #f0efd0; }
+.cm-s-talo span.cm-operator { color: #f0efd0; }
+.cm-s-talo span.CodeMirror-matchingbracket { box-sizing: border-box; background: transparent; border-bottom: 1px solid; }
+.cm-s-talo span.CodeMirror-nonmatchingbracket { border-bottom: 1px solid; background: none; }
+.cm-s-talo .CodeMirror-activeline { background: #000000; }
+.cm-s-talo .CodeMirror-activeline-background { background: #000000; }
+.cm-s-talo div.CodeMirror-selected { background: #545454; }
+.cm-s-talo .CodeMirror-focused div.CodeMirror-selected { background: #4f4f4f; }

@@ -11,9 +11,10 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { getNotebookContent } from 'ui/utils/resources';
 import { changeResourceSelected } from 'ui/containers/ResourcesTree/actions';
+import PanelContainer from 'ui/components/PanelContainer';
 import { selectResources, selectResource } from './selectors';
 import messages from './messages';
-import { Container } from './wrappers';
+import { Container, Scroll } from './wrappers';
 
 export class WorkSpacePage extends React.Component {
   componentDidMount() {
@@ -31,14 +32,21 @@ export class WorkSpacePage extends React.Component {
     return (
       <Container>
         <Helmet
-          title="OctoQL Workspace"
+          title={`${notebook.title} - OctoQL Workspace`}
           meta={[
             { name: 'description', content: 'Description of WorkSpacePage' },
           ]}
         />
-        <h1>
-          {notebook ? notebook.title : 'No Notebook found'}
-        </h1>
+        <Scroll>
+          {notebook.queries.map((query, i) =>
+            <PanelContainer
+              className="talo-editor"
+              description={query.description}
+              query={query.query}
+              key={i}
+            />
+          )}
+        </Scroll>
       </Container>
     );
   }

@@ -12,7 +12,12 @@ import { createStructuredSelector } from 'reselect';
 import { selectBlogPostVisibility } from 'ui/containers/BlogPost/selectors';
 import { toggleBlogPostVisibility } from 'ui/containers/BlogPost/actions';
 import messages from './messages';
-import { Container, GlobalScroll, ContainerSwitcher } from './wrappers';
+import {
+  Container,
+  GlobalScroll,
+  ContainerSwitcher,
+  Section,
+} from './wrappers';
 
 function BlogPost(props) {
   return (
@@ -24,6 +29,8 @@ function BlogPost(props) {
       />
       <GlobalScroll>
         <h2>Crafting a DSL</h2>
+        <Section>Intro</Section> | <Section>Grammar</Section> |{' '}
+        <Section>References</Section>
         <p>
           Data is probably the most valuable and requested asset all over the
           world. We humans are eager to consume it and are constantly looking
@@ -41,14 +48,14 @@ function BlogPost(props) {
           In our first post, we drove a general introduction to this topic, but
           did not get our hands into the job. This time we'll make it by
           designing and implementing an interesting case of a domain specific
-          language for interacting with Github. We're gonna learn so much!
+          language. We're gonna learn so much!
         </p>
         <p>
           Domain specific languages can be shaped as internal or embebbed and as
-          external. Whereas the embedded or internal DSL are limited by the host
+          external. Whereas the embedded/internal DSL are limited by the host
           language they are built on top of, the external ones can be more
           expressive at cost of requiring further tooling and higher maintenance
-          effort. We'll work out an external DSL solution for learing purposes
+          effort. We'll work out an external DSL solution for learning purposes
           as most of well known DSL implementations are external. Some examples
           might include SQL, HTML or CSS, to name a few.
         </p>
@@ -57,12 +64,12 @@ function BlogPost(props) {
           dealing with complex filters. Retrieving all issues assigned to an
           user where labels contains some tags but at same time labels must not
           contain certain tags can become not so intuitive and straight forward
-          to achieve as it may seem. This is why I though it might be
+          to achieve as it may seem to. This is why I though it might be
           interesting to build a DSL to provide a better way to interact and
-          retrieve Github issues.
+          retrieve Github issues as a didactic example.
         </p>
         <p>
-          We will want to make our DSL as familiar as possible to our targetted
+          We will want to make our DSL as familiar as possible to our final
           users. As the DSL solution we're going to build is intended to be used
           by Github users in general, which is a farily huge audience, mostly
           made of software developers, we'll try to make it as familiar as
@@ -72,10 +79,10 @@ function BlogPost(props) {
           In that sense, using an existing centric programmig language solution
           would favor one group of developers over the others, which would be
           also better implemented by an internal or embedded DSL rather than an
-          external, so instead we are going to adopt an sql-like approach for
-          our DSL syntax as this is fairly familiar to most of software
-          developers regardless the programing language they are used to code
-          in.
+          external, so instead we are going to adopt a completely different
+          approach b using an sql-like syntax for our DSL as this is fairly
+          familiar to most of software developers regardless the programing
+          language they are used to code in.
         </p>
         <p>
           As explained in the last post, external DSL require a lexer and a
@@ -84,11 +91,11 @@ function BlogPost(props) {
           for better error recovering or reporting is required.
         </p>
         <p>
-          I'll be using PEG.js, which is a JavaScript based parser generator
-          library that produces fast parsers with excellent error reporting.
-          Other good alternative are parboiled2 for Scala users or ANTLR for
-          Java users. You can find more PEG-based solutions at
-          http://bford.info/packrat/
+          This time we'll be using PEG.js, which is a JavaScript based parser
+          generator library that produces fast parsers with excellent error
+          reporting but there are other good alternatives as parboiled2 for
+          Scala users or ANTLR for Java users. You can find more PEG-based
+          solutions at http://bford.info/packrat/
         </p>
       </GlobalScroll>
     </Container>

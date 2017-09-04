@@ -28,7 +28,29 @@ const initialState = fromJS({
   resources: {
     tsur: {
       octoql: {
-        example: { queries: [], meta: {}, id: '', title: 'Example' },
+        example: {
+          queries: [
+            {
+              description: 'What do I need to work in today ?',
+              query: `-- Press Enter+Shift To Run It
+from tsur/octoql
+take 5
+assignedTo me
+order by priority`,
+            },
+            {
+              description: 'Too much information ..., just a quick view',
+              query: `from tsur/octoql
+take 5
+assignedTo me
+order by priority
+select title`,
+            },
+          ],
+          meta: {},
+          id: '',
+          title: 'Example',
+        },
       },
       blockade: {
         notebook1: { queries: [], meta: {}, id: '', title: 'Notebook1' },

@@ -65,3 +65,9 @@ export const ContainerSwitcher = styled.span`
     -webkit-font-smoothing: antialiased;
   }
 `;
+
+export const Section = styled.h3`
+  display: inline-block;
+  margin: 0;
+  font-weight: bold;
+`;
