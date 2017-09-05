@@ -51,22 +51,27 @@ function BlogPost(props) {
           language. We're gonna learn so much!
         </p>
         <p>
-          Domain specific languages can be shaped as internal or embebbed and as
-          external. Whereas the embedded/internal DSL are limited by the host
+          Domain specific languages can be shaped as internal/embebbed and as
+          externals. Whereas the embedded/internal DSL are limited by the host
           language they are built on top of, the external ones can be more
           expressive at cost of requiring further tooling and higher maintenance
-          effort. We'll work out an external DSL solution for learning purposes
-          as most of well known DSL implementations are external. Some examples
-          might include SQL, HTML or CSS, to name a few.
+          efforts.
+        </p>
+        <p>
+          We'll work out an external DSL solution for learning purposes as most
+          of well known DSL implementations are external. Some examples might
+          include SQL, HTML or CSS, to name a few. To make this exercise easier
+          to follow, we'll work with one of the most well known development
+          platform. Yep, I'm talking about Github.
         </p>
         <p>
           Working with Github issues is sometimes a bit annoying, specially when
           dealing with complex filters. Retrieving all issues assigned to an
           user where labels contains some tags but at same time labels must not
           contain certain tags can become not so intuitive and straight forward
-          to achieve as it may seem to. This is why I though it might be
-          interesting to build a DSL to provide a better way to interact and
-          retrieve Github issues as a didactic example.
+          to achieve as it may seem to. This is why it might be interesting to
+          build a DSL to provide and offer a better experience when interacting
+          and retrieving Github issues.
         </p>
         <p>
           We will want to make our DSL as familiar as possible to our final
@@ -93,9 +98,9 @@ function BlogPost(props) {
         <p>
           This time we'll be using PEG.js, which is a JavaScript based parser
           generator library that produces fast parsers with excellent error
-          reporting but there are other good alternatives as parboiled2 for
-          Scala users or ANTLR for Java users. You can find more PEG-based
-          solutions at http://bford.info/packrat/
+          reporting. There are other good alternatives as parboiled2 for Scala
+          users or ANTLR for Java users. You can find more PEG-based solutions
+          at http://bford.info/packrat/
         </p>
       </GlobalScroll>
     </Container>

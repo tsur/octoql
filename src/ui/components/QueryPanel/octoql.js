@@ -10,18 +10,26 @@ export default function (CodeMirror) {
   // field -> #dcdccc
 
   CodeMirror.defineMode('octoql', () => ({
-    token(stream, state) {
+    token(stream) {
       //   stream.eatWhile(/\w/);
 
-      if (stream.match(/(?:select|from|take|where)\b/)) {
+      if (
+        stream.match(
+          /[0-9]{2}\/[0-9]{2}\/[0-9]{2,4}|months|month|days|day|years|year|weeks|week|ago/
+        )
+      ) {
+        return 'octo-date';
+      }
+
+      if (stream.match(/(?:select|from|take|where)/)) {
         return 'octo-keyword';
       }
 
-      if (stream.match(/(?:assignedTo|order by)\b/)) {
+      if (stream.match(/(?:assignedTo|order by)/)) {
         return 'octo-builtin';
       }
 
-      if (stream.match(/(.+)(\/)(.+)/i)) {
+      if (stream.match(/(\w+)(\/)(\w+)/i)) {
         return 'octo-from';
       }
 
@@ -33,7 +41,7 @@ export default function (CodeMirror) {
         return 'octo-comment';
       }
 
-      if (stream.match(/[-+/*=<>!]+/)) {
+      if (stream.match(/[-+/*=<>!]+|contains|not|and|or/)) {
         return 'octo-operator';
       }
 

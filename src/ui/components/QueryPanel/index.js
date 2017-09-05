@@ -14,7 +14,7 @@ class QueryPanel extends React.Component {
     octoqlMode(CodeMirror);
     this.editor = CodeMirror.fromTextArea(this.textArea, {
       mode: 'octoql',
-      lineNumbers: true,
+      lineNumbers: false,
       lineWrapping: true,
       smartIndent: false,
       matchBrackets: true,
@@ -32,6 +32,12 @@ class QueryPanel extends React.Component {
     this.editor.focus();
 
     // this.editor.on('change', this._handleChange);
+
+    // Disabled
+    // this.editor.setOption('readOnly', true);
+    // this.editor.setOption('styleActiveLine', false);
+    // this.editor.getWrapperElement().style['background-color'] =
+    //   'rgba(0, 0, 0, 0.1)';
   }
 
   render() {

@@ -125,10 +125,10 @@
   background: none;
 }
 .cm-s-talo .CodeMirror-activeline {
-  background: #000000;
+  background: rgba(0, 0, 0, 0.2);
 }
 .cm-s-talo .CodeMirror-activeline-background {
-  background: #000000;
+  background: rgba(0, 0, 0, 0.2);
 }
 .cm-s-talo div.CodeMirror-selected {
   background: #545454;
@@ -138,30 +138,40 @@
 }
 
 .cm-s-talo span.cm-octo-keyword {
-  color: rgb(226, 192, 141);
-  font-weight: bold;
+  color: rgba(226, 192, 141, 0.8);
+  /* font-weight: bold; */
 }
 
 .cm-s-talo span.cm-octo-builtin {
   color: rgba(226, 192, 141, 0.8);
 }
 
+.cm-s-talo span.cm-octo-date {
+  color: #cc9393;
+  /* color: #dcdccc; */
+}
+
 .cm-s-talo span.cm-octo-number {
-  color: #dcdccc;
+  color: #cc9393;
+  /* color: #dcdccc; */
 }
 
 .cm-s-talo span.cm-octo-from {
   color: #73c990;
 }
 
-.cm-s-talo span.cm-octo-comment {
+/* .cm-s-talo span.cm-octo-comment {
   color: #73c990;
-}
+} */
 
-.cm-s-talo span.cm-octo-operator {
-  color: #f0efd0;
-}
+/* .cm-s-talo span.cm-octo-operator {
+  color: #6192ED;
+} */
 
 .cm-s-talo span.cm-octo-string {
   color: #cc9393;
+}
+
+.cm-s-talo span.cm-octo-field {
+  color: #6192ed;
 }

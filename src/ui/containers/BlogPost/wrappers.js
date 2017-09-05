@@ -13,19 +13,18 @@ export const Container = styled.div`
   position: relative;
   box-sizing: border-box;
   height: initial;
-  // overflow: hidden;
   cursor: default;
   -webkit-user-select: none;
   user-select: none;
-  // min-width: 300px;
-  width: 300px;
-  max-width: 300px;
+  width: 400px;
+  max-width: 400px;
   z-index: 2;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   padding: 10px 0 0 5px;
   border-left: 1px solid #27292c;
+  font-size: 14px;
   ${(props) => !props.expanded && 'max-width: 0px;'};
 `;
 
@@ -41,7 +40,7 @@ export const GlobalScroll = styled.div`
 `;
 
 export const ContainerSwitcher = styled.span`
-  background: rgba(163, 168, 174, 0.2);
+  background: rgb(60, 60, 60);
   display: inline-block;
   border-bottom-left-radius: 60px;
   border-top-left-radius: 60px;
@@ -60,9 +59,11 @@ export const ContainerSwitcher = styled.span`
     font-family: 'octicons';
     font-weight: normal;
     font-style: normal;
-    font-size: 15px;
+    font-size: 17px;
     display: inline-block;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+    top: -2px;
   }
 `;
 

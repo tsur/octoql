@@ -32,19 +32,37 @@ const initialState = fromJS({
           queries: [
             {
               description: 'What do I need to work in today ?',
-              query: `-- Press Enter+Shift To Run It
+              query: `-- Press Enter+Shift To Run
 from tsur/octoql
-take 5
-assignedTo me
-order by priority`,
+where assigned == me
+take 5`,
             },
             {
-              description: 'Too much information ..., just a quick view',
-              query: `from tsur/octoql
+              description: 'Too much information ... just a quick view',
+              query: `-- Press Enter+Shift To Run
+from tsur/octoql
+where assigned == me
 take 5
-assignedTo me
-order by priority
 select title`,
+            },
+            {
+              description:
+                'Something really urgent that requires my attention ?',
+              query: `-- Press Enter+Shift To Run
+from tsur/octoql
+where labels contains "urgent" and labels not contains "merged"`,
+            },
+            {
+              description: 'These issues could be fixed later ...',
+              query: `-- Press Enter+Shift To Run
+from tsur/octoql
+where labels not contains "urgent" and labels not contains "merged"`,
+            },
+            {
+              description: 'These issues could be closed ...',
+              query: `-- Press Enter+Shift To Run
+from tsur/octoql
+where labels contains "merged" or creation_date <= 2.months.ago`,
             },
           ],
           meta: {},
@@ -52,15 +70,15 @@ select title`,
           title: 'Example',
         },
       },
-      blockade: {
-        notebook1: { queries: [], meta: {}, id: '', title: 'Notebook1' },
-      },
+      // blockade: {
+      //   notebook1: { queries: [], meta: {}, id: '', title: 'Notebook1' },
+      // },
     },
-    angular: {
-      angular2: {
-        notebook1: { queries: [], meta: {}, id: '', title: 'Notebook1' },
-      },
-    },
+    // angular: {
+    //   angular2: {
+    //     notebook1: { queries: [], meta: {}, id: '', title: 'Notebook1' },
+    //   },
+    // },
   },
 });
 

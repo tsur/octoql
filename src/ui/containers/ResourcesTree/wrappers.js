@@ -5,7 +5,10 @@
 
 /* System imports */
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import Octicon from 'react-Octicon';
 import styled from 'styled-components';
+import messages from './messages';
 
 const Wrapper = styled.div``;
 const TreeWrapper = styled.div`
@@ -297,19 +300,31 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  padding: 10px 0 0 5px;
   border-right: 1px solid #27292c;
 `;
 
-export const GlobalScroll = styled.div`
+const GlobalScrollContainer = styled.div`
+  height: calc(100% - 40px);
+  width: 100%;
+  padding: 10px 0 0 5px;
+`;
+// export const GlobalScroll = styled.div`
+const GlobalScrollStyled = styled.div`
   position: absolute;
-  height: 100%;
+  height: calc(100% - 40px);
   width: 100%;
   top: 0;
   left: 0;
   overflow-y: auto;
   overflow-x: hidden;
 `;
+
+export const GlobalScroll = ({ children }) =>
+  <GlobalScrollContainer>
+    <GlobalScrollStyled>
+      {children}
+    </GlobalScrollStyled>
+  </GlobalScrollContainer>;
 
 export const TreeScroll = styled.div`
   border-image: none;
@@ -322,3 +337,36 @@ export const TreeScroll = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+const ActionsDiv = styled.div`
+  height: 40px;
+  width: 100%;
+  border-top: 1px solid #27292c;
+  text-align: center;
+  display: table;
+  cursor: pointer;
+`;
+const ActionsDivContent = styled.div`
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  text-transform: uppercase;
+  word-spacing: 5px;
+  transition: all .5s ease-in-out;
+  &:hover {
+    color: rgba(226, 192, 141, 1);
+  }
+`;
+export function Actions() {
+  return (
+    <ActionsDiv>
+      <ActionsDivContent>
+        <Octicon name="plus" />{' '}
+        <FormattedMessage {...messages.addNotebookAction} />
+      </ActionsDivContent>
+    </ActionsDiv>
+  );
+}

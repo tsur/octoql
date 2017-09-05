@@ -10,7 +10,7 @@ export const Container = styled.section`
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  margin: 30px 0;
+  margin: 0;
   position: relative;
 `;
 
@@ -21,4 +21,5 @@ export const Scroll = styled.section`
   width: 100%;
   height: 100%;
   overflow: auto;
+  padding-top: 30px;
 `;

@@ -10,7 +10,7 @@ import * as Resources from 'ui/utils/resources';
 import { changeResourceSelected, addTreeResource } from './actions';
 import { selectResources, selectResource } from './selectors';
 import messages from './messages';
-import { Container, GlobalScroll, Tree } from './wrappers';
+import { Container, GlobalScroll, Tree, Actions } from './wrappers';
 
 class ResourcesTree extends React.Component {
   componentWillMount() {
@@ -139,6 +139,7 @@ class ResourcesTree extends React.Component {
             selected={this.props.resourceSelected}
           />
         </GlobalScroll>
+        <Actions />
       </Container>
     );
   }

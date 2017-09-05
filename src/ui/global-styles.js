@@ -37,11 +37,11 @@ injectGlobal`
   }
 
   ::-webkit-scrollbar-thumb {
-      background: rgba(100, 100, 100, 0.8);
+      background: rgb(60, 60, 60);
   }
 
   ::-webkit-scrollbar-corner,
   ::-webkit-scrollbar-thumb:window-inactive {
-      background: rgba(100, 100, 100, 0.4);
+      background: rgb(60, 60, 60);
   }
 `;
