@@ -11,14 +11,16 @@ function PanelContainer(props) {
 
   return (
     <Container>
-      <TextPanel text={props.description || defaultTextPanel} />
-      <QueryPanel query={props.query || defaultQueryPanel} />
+      {props.type === 'text'
+        ? <TextPanel text={props.content || defaultTextPanel} />
+        : <QueryPanel query={props.content || defaultQueryPanel} />}
     </Container>
   );
 }
 
 PanelContainer.propTypes = {
-  description: PropTypes.string,
-  query: PropTypes.string,
+  type: PropTypes.string,
+  content: PropTypes.string,
 };
+
 export default PanelContainer;

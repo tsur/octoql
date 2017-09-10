@@ -139,7 +139,7 @@ class ResourcesTree extends React.Component {
             selected={this.props.resourceSelected}
           />
         </GlobalScroll>
-        <Actions />
+        <Actions onClick={(event) => this.addNotebookShortcut(event)} />
       </Container>
     );
   }

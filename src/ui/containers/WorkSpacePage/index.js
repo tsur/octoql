@@ -32,17 +32,17 @@ export class WorkSpacePage extends React.Component {
     return (
       <Container>
         <Helmet
-          title={`${notebook.title} - OctoQL Workspace`}
+          title={`${notebook.title} - OctoQL Notebook`}
           meta={[
             { name: 'description', content: 'Description of WorkSpacePage' },
           ]}
         />
         <Scroll>
-          {notebook.queries.map((query, i) =>
+          {notebook.panels.map((panel, i) =>
             <PanelContainer
               className="talo-editor"
-              description={query.description}
-              query={query.query}
+              type={panel.type}
+              content={panel.content}
               key={i}
             />
           )}

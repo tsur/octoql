@@ -21,5 +21,6 @@ export const Scroll = styled.section`
   width: 100%;
   height: 100%;
   overflow: auto;
-  padding-top: 30px;
+  padding-top: 15px;
+  padding-bottom: 10px;
 `;

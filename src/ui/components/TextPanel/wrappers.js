@@ -22,4 +22,17 @@ export const TextContainer = styled.div`
   & p {
     margin: 0;
   }
+
+  & h1 {
+    font-size: 1.5em;
+  }
+
+  & h2 {
+    font-size: 1.2em;
+  }
+
+  & a {
+    color: inherit;
+    text-decoration: underline;
+  }
 `;

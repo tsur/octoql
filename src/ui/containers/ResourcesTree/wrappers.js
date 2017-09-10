@@ -360,9 +360,9 @@ const ActionsDivContent = styled.div`
     color: rgba(226, 192, 141, 1);
   }
 `;
-export function Actions() {
+export function Actions(props) {
   return (
-    <ActionsDiv>
+    <ActionsDiv {...props}>
       <ActionsDivContent>
         <Octicon name="plus" />{' '}
         <FormattedMessage {...messages.addNotebookAction} />

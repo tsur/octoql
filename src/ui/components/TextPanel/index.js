@@ -26,7 +26,7 @@ function TextPanel(props) {
           options={{ spellcheck: false, toolbar: { buttons: toolbar } }}
         />
       </TextContainer>
-      <PanelActions />
+      <PanelActions panel="text" />
     </Container>
   );
 }

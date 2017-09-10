@@ -67,8 +67,19 @@ export const ContainerSwitcher = styled.span`
   }
 `;
 
-export const Section = styled.h3`
+export const Nav = styled.h3`
   display: inline-block;
   margin: 0;
   font-weight: bold;
+  cursor: pointer;
+  transition: color .5s ease-in-out;
+  border-bottom: ${(props) =>
+    props.actived ? '1px dotted rgba(255, 255, 255, 0.5)' : 'none'};
+  &:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+`;
+
+export const Div = styled.div`
+  display: ${(props) => (props.visible ? 'block' : 'none')};
 `;

@@ -29,38 +29,61 @@ const initialState = fromJS({
     tsur: {
       octoql: {
         example: {
-          queries: [
+          panels: [
             {
-              description: 'What do I need to work in today ?',
-              query: `-- Press Enter+Shift To Run
+              type: 'text',
+              content: '<h1>An OctoQL Notebook ...</h1>',
+            },
+            {
+              type: 'text',
+              content: 'What do I need to work in today ?',
+            },
+            {
+              type: 'query',
+              content: `-- Press Enter+Shift To Run
 from tsur/octoql
 where assigned == me
 take 5`,
             },
             {
-              description: 'Too much information ... just a quick view',
-              query: `-- Press Enter+Shift To Run
+              type: 'text',
+              content: 'Too much information ... just a quick view',
+            },
+            {
+              type: 'query',
+              content: `-- Press Enter+Shift To Run
 from tsur/octoql
 where assigned == me
 take 5
 select title`,
             },
             {
-              description:
-                'Something really urgent that requires my attention ?',
-              query: `-- Press Enter+Shift To Run
+              type: 'text',
+              content: 'Something really urgent that requires my attention ?',
+            },
+            {
+              type: 'query',
+              content: `-- Press Enter+Shift To Run
 from tsur/octoql
 where labels contains "urgent" and labels not contains "merged"`,
             },
             {
-              description: 'These issues could be fixed later ...',
-              query: `-- Press Enter+Shift To Run
+              type: 'text',
+              content: 'These issues could be fixed later ...',
+            },
+            {
+              type: 'query',
+              content: `-- Press Enter+Shift To Run
 from tsur/octoql
 where labels not contains "urgent" and labels not contains "merged"`,
             },
             {
-              description: 'These issues could be closed ...',
-              query: `-- Press Enter+Shift To Run
+              type: 'text',
+              content: 'These issues could be closed ...',
+            },
+            {
+              type: 'query',
+              content: `-- Press Enter+Shift To Run
 from tsur/octoql
 where labels contains "merged" or creation_date <= 2.months.ago`,
             },
@@ -90,7 +113,12 @@ function createPath(pathRoute, localState) {
     return temp;
   }, _.size(pathRoute) === 3
     ? {
-      queries: [],
+      panels: [
+        {
+          type: 'text',
+          content: '<h1>Notebook Title ...</h1>',
+        },
+      ],
       meta: pathRoute,
       title: Resources.getNotebookTitle(pathRoute.join('')),
       id: pathRoute.join(''),

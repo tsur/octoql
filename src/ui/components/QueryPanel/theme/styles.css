@@ -125,10 +125,10 @@
   background: none;
 }
 .cm-s-talo .CodeMirror-activeline {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(100, 100, 100, 0.1); /* rgba(226, 192, 141, 0.1); */
 }
 .cm-s-talo .CodeMirror-activeline-background {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(100, 100, 100, 0.1); /* rgba(226, 192, 141, 0.1); */
 }
 .cm-s-talo div.CodeMirror-selected {
   background: #545454;
