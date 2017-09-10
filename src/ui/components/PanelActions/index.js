@@ -36,6 +36,10 @@ class PanelActions extends React.Component {
       : <QueryContainer>
         <Icon name="ellipsis" />
         {MenuElement}
+        {/* <Icon name="triangle-right" />
+        {MenuElement}
+        <Icon name="eye" />
+        {MenuElement} */}
       </QueryContainer>;
   }
 }
