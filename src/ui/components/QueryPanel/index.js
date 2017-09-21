@@ -5,6 +5,7 @@ import Octicon from 'react-octicon';
 import PubSub from 'ui/utils/pubsub';
 import HotKeys from 'ui/utils/hotkeys';
 import PanelActions from 'ui/components/PanelActions';
+import fetchGithubIssues from 'github';
 import CodeMirror from 'codemirror';
 import 'codemirror/addon/selection/mark-selection';
 import 'codemirror/addon/selection/active-line';
@@ -18,14 +19,7 @@ class QueryPanel extends React.Component {
     super(props);
     this.state = {
       loading: false,
-      issues: [
-        { title: 'hi', labels: 'p1, p2' },
-        { title: 'hi', labels: 'p1, p2' },
-        { title: 'hi', labels: 'p1, p2' },
-        { title: 'hi', labels: 'p1, p2' },
-        { title: 'hi', labels: 'p1, p2' },
-        { title: 'hi', labels: 'p1, p2' },
-      ],
+      issues: [],
     };
   }
   componentWillMount() {
@@ -92,14 +86,36 @@ class QueryPanel extends React.Component {
     this.editor.focus();
   }
 
-  runNotebookShortcut() {
-    this.setState({ loading: true });
-    this.editor.setOption('readOnly', true);
-    this.editor.setOption('styleActiveLine', false);
+  toggleEditor() {
+    this.editor.setOption('readOnly', !this.editor.getOption('readOnly'));
+    this.editor.setOption(
+      'styleActiveLine',
+      !this.editor.getOption('styleActiveLine')
+    );
     this.editor.getWrapperElement().style['background-color'] =
-      'rgba(96,146, 237, .1)';
+      this.editor.getWrapperElement().style['background-color'] ===
+      'rgba(96, 146, 237, 0.1)'
+        ? '#161719'
+        : 'rgba(96, 146, 237, .1)';
     // 'rgba(0, 0, 0, 0.5)';
-    console.log('Running notebook', this.props.query);
+  }
+
+  async runNotebookShortcut() {
+    try {
+      this.setState({ loading: true });
+      this.toggleEditor();
+      const githubIssues = await fetchGithubIssues(this.editor.getValue());
+      this.toggleEditor();
+      this.setState({ issues: githubIssues, loading: false });
+      console.log('Running notebook', this.props.query);
+    } catch (error) {
+      // print error
+      this.toggleEditor();
+      this.setState({ loading: false });
+    } finally {
+      // this.setState({ loading: false });
+    }
+
     return HotKeys.RUN_NOTEBOOK.default;
   }
 
