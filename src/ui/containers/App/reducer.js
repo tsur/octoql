@@ -53,9 +53,10 @@ take 5`,
               type: 'query',
               content: `-- Press Enter+Shift To Run
 from tsur/octoql
+select title
 where assigned == me
 take 5
-select title`,
+`,
             },
             {
               type: 'text',
