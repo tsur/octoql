@@ -102,3 +102,9 @@ export function Results(props) {
     </TableWrapper>
   );
 }
+
+export const Error = styled.p`
+  margin-top: 0;
+  background-color: rgba(255, 0, 0, 0.2);
+  padding: 10px;
+`;

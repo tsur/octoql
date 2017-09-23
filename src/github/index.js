@@ -17,7 +17,6 @@ export default function getGithubIssues(query) {
         2000
       );
     } catch (error) {
-      console.log('Error >>>', error);
       reject(error);
     }
   });

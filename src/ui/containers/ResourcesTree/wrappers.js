@@ -6,7 +6,7 @@
 /* System imports */
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import Octicon from 'react-Octicon';
+import Octicon from 'react-octicon';
 import styled from 'styled-components';
 import messages from './messages';
 

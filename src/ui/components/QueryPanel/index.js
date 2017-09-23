@@ -11,7 +11,13 @@ import 'codemirror/addon/selection/mark-selection';
 import 'codemirror/addon/selection/active-line';
 import 'codemirror/lib/codemirror.css';
 import './theme/styles.css';
-import { Container, EditorContainer, Loading, Results } from './wrappers';
+import {
+  Container,
+  EditorContainer,
+  Loading,
+  Results,
+  Error,
+} from './wrappers';
 import octoqlMode from './octoql';
 
 class QueryPanel extends React.Component {
@@ -19,6 +25,7 @@ class QueryPanel extends React.Component {
     super(props);
     this.state = {
       loading: false,
+      error: null,
       issues: [],
     };
   }
@@ -102,7 +109,7 @@ class QueryPanel extends React.Component {
 
   async runNotebookShortcut() {
     try {
-      this.setState({ loading: true });
+      this.setState({ loading: true, error: null });
       this.toggleEditor();
       const githubIssues = await fetchGithubIssues(this.editor.getValue());
       this.toggleEditor();
@@ -111,7 +118,11 @@ class QueryPanel extends React.Component {
     } catch (error) {
       // print error
       this.toggleEditor();
-      this.setState({ loading: false });
+      this.setState({
+        loading: false,
+        error: `${error.message} at line ${error.location.start
+          .line}, column ${error.location.start.column}`,
+      });
     } finally {
       // this.setState({ loading: false });
     }
@@ -122,6 +133,10 @@ class QueryPanel extends React.Component {
   render() {
     return (
       <div>
+        {this.state.error &&
+          <Error>
+            {this.state.error}
+          </Error>}
         <Container>
           <EditorContainer
             innerRef={(editorContainer) =>
@@ -138,7 +153,7 @@ class QueryPanel extends React.Component {
           </EditorContainer>
           <PanelActions panel="query" />
         </Container>
-        {this.state.issues.length && <Results issues={this.state.issues} />}
+        {!!this.state.issues.length && <Results issues={this.state.issues} />}
       </div>
     );
   }
