@@ -13,6 +13,12 @@
 import { fromJS } from 'immutable';
 import _ from 'lodash';
 import * as Resources from 'ui/utils/resources';
+import {
+  CREATE_TEXT_PANEL,
+  CREATE_QUERY_PANEL,
+  UPDATE_PANEL,
+  REMOVE_PANEL,
+} from 'ui/components/TextPanelActions/constants';
 import { CHANGE_RESOURCE_SELECTED, ADD_RESOURCE } from './constants';
 
 // The initial state of the App
@@ -33,10 +39,12 @@ const initialState = fromJS({
             {
               type: 'text',
               content: '<h1>An OctoQL Notebook ...</h1>',
+              removable: false,
             },
             {
               type: 'text',
               content: 'What do I need to work in today ?',
+              removable: false,
             },
             {
               type: 'query',
@@ -44,10 +52,12 @@ const initialState = fromJS({
 from tsur/octoql
 where assigned == me
 take 5`,
+              removable: false,
             },
             {
               type: 'text',
               content: 'Too much information ... just a quick view',
+              removable: false,
             },
             {
               type: 'query',
@@ -55,38 +65,44 @@ take 5`,
 from tsur/octoql
 select title
 where assigned == me
-take 5
-`,
+take 5`,
+              removable: false,
             },
             {
               type: 'text',
               content: 'Something really urgent that requires my attention ?',
+              removable: false,
             },
             {
               type: 'query',
               content: `-- Press Enter+Shift To Run
 from tsur/octoql
 where labels contains "urgent" and labels not contains "merged"`,
+              removable: false,
             },
             {
               type: 'text',
               content: 'These issues could be fixed later ...',
+              removable: false,
             },
             {
               type: 'query',
               content: `-- Press Enter+Shift To Run
 from tsur/octoql
 where labels not contains "urgent" and labels not contains "merged"`,
+              removable: false,
             },
             {
               type: 'text',
               content: 'These issues could be closed ...',
+              removable: false,
             },
             {
               type: 'query',
               content: `-- Press Enter+Shift To Run
 from tsur/octoql
 where labels contains "merged" or creation_date <= 2.months.ago`,
+              removable: false,
             },
           ],
           meta: {},
@@ -149,6 +165,47 @@ function appReducer(state = initialState, action) {
       }
       return createPath(aNewResourcePath, localState);
 
+    case CREATE_TEXT_PANEL:
+      return state.updateIn(
+        ['resources'].concat(action.path.split('/')).concat(['panels']),
+        (panels) =>
+          panels.splice(
+            action.id + 1,
+            0,
+            fromJS({
+              type: 'text',
+              content: null,
+              removable: true,
+            })
+          )
+      );
+    case CREATE_QUERY_PANEL:
+      return state.updateIn(
+        ['resources'].concat(action.path.split('/')).concat(['panels']),
+        (panels) =>
+          panels.splice(
+            action.id + 1,
+            0,
+            fromJS({
+              type: 'query',
+              content: null,
+              removable: true,
+            })
+          )
+      );
+    case UPDATE_PANEL:
+      return state.updateIn(
+        ['resources'].concat(action.path.split('/')).concat(['panels']),
+        (panels) =>
+          panels.update(action.id, (panel) =>
+            panel.set('content', action.content)
+          )
+      );
+    case REMOVE_PANEL:
+      return state.updateIn(
+        ['resources'].concat(action.path.split('/')).concat(['panels']),
+        (panels) => panels.delete(action.id)
+      );
     default:
       return state;
   }

@@ -41,9 +41,10 @@ export class WorkSpacePage extends React.Component {
           {notebook.panels.map((panel, i) =>
             <PanelContainer
               className="talo-editor"
-              type={panel.type}
-              content={panel.content}
+              panel={panel}
               key={i}
+              id={i}
+              path={location.pathname.replace('/notebooks/', '')}
             />
           )}
         </Scroll>

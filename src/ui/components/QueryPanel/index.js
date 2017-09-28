@@ -1,10 +1,12 @@
 // MIT: FormidableLabs/component-playground
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { mouseTrap } from 'react-mousetrap';
 import Octicon from 'react-octicon';
 import PubSub from 'ui/utils/pubsub';
 import HotKeys from 'ui/utils/hotkeys';
-import PanelActions from 'ui/components/PanelActions';
+import QueryPanelActions from 'ui/components/QueryPanelActions';
+import { updatePanel } from 'ui/components/TextPanelActions/actions';
 import fetchGithubIssues from 'github';
 import CodeMirror from 'codemirror';
 import 'codemirror/addon/selection/mark-selection';
@@ -19,6 +21,8 @@ import {
   Error,
 } from './wrappers';
 import octoqlMode from './octoql';
+
+const defaultQueryPanel = '-- Type your query here and hit Shift+Run to run';
 
 class QueryPanel extends React.Component {
   constructor(props) {
@@ -70,7 +74,7 @@ class QueryPanel extends React.Component {
     this.editor.refresh();
     // this.editor.setCursor(this.editor.lineCount() + 1);
     this.editor.setCursor(this.editor.lineCount());
-    this.editor.focus();
+    // this.editor.focus();
     this.enableMouseTrapShortcut();
 
     // this.editor.on('change', this._handleChange);
@@ -90,7 +94,7 @@ class QueryPanel extends React.Component {
   fuzzyFinderClosed() {
     // Remember what editor was actived and filter by it
     // if (!this.last_editor_actived) return;
-    this.editor.focus();
+    // this.editor.focus();
   }
 
   toggleEditor() {
@@ -109,7 +113,7 @@ class QueryPanel extends React.Component {
 
   async runNotebookShortcut() {
     try {
-      this.setState({ loading: true, error: null });
+      this.setState({ loading: true, error: null, issues: [] });
       this.toggleEditor();
       const githubIssues = await fetchGithubIssues(this.editor.getValue());
       this.toggleEditor();
@@ -130,9 +134,18 @@ class QueryPanel extends React.Component {
     return HotKeys.RUN_NOTEBOOK.default;
   }
 
+  onBlur(event) {
+    this.props.updatePanel(
+      this.props.id,
+      this.props.path,
+      this.editor.getValue()
+    );
+    return false;
+  }
+
   render() {
     return (
-      <div>
+      <div onBlur={(event) => this.onBlur(event)}>
         {this.state.error &&
           <Error>
             {this.state.error}
@@ -144,14 +157,19 @@ class QueryPanel extends React.Component {
           >
             <textarea
               ref={(textarea) => (this.textArea = textarea)}
-              defaultValue={this.props.query}
+              defaultValue={this.props.panel.content || defaultQueryPanel}
             />
             {this.state.loading &&
               <Loading>
                 <Octicon name="mark-github" spin />
               </Loading>}
           </EditorContainer>
-          <PanelActions panel="query" />
+          <QueryPanelActions
+            panel="query"
+            id={this.props.id}
+            path={this.props.path}
+            removable={this.props.panel.removable}
+          />
         </Container>
         {!!this.state.issues.length && <Results issues={this.state.issues} />}
       </div>
@@ -160,8 +178,19 @@ class QueryPanel extends React.Component {
 }
 
 QueryPanel.propTypes = {
-  query: PropTypes.string,
+  panel: PropTypes.object,
+  id: PropTypes.number,
+  path: PropTypes.string,
+  updatePanel: PropTypes.func,
   // bindShortcut: PropTypes.func,
 };
 
-export default mouseTrap(QueryPanel);
+const mapStateToProps = () => ({});
+const mapDispatchToProps = (dispatch) => ({
+  updatePanel: (panelID, panelPath, panelContent) =>
+    dispatch(updatePanel(panelID, panelPath, panelContent)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  mouseTrap(QueryPanel)
+);

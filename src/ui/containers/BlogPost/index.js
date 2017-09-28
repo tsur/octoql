@@ -135,15 +135,18 @@ class BlogPost extends React.Component {
             <p>
               The grammar could be described as the final outcome of our
               specific domain modeling process for which we will have to work
-              out later an specific implementation. This grammar requires us to
-              understand well the domain we are working with and this, in turn,
-              drives us to clearly know the requirements/problems our final
-              users are trying to satisfy and solve. So yep, we have to put
-              ourselves in the final user shoes, which translates into
-              performing an analysis and spending time gathering information
-              about the needed requirements from the domain experts. The Grammar
-              rules will come and get improved over and over again out of the
-              final, end domain expert users feedback.
+              out later an specific implementation.
+            </p>
+            <p>
+              A proper grammar definition requires us to grab a deep
+              understanding about the domain we are working with and this, in
+              turn, forces us to clearly know the requirements and problems our
+              final users are trying to solve. So yep, we have to put ourselves
+              in our user shoes, which can be translated as performing different
+              analysis, trying things out and spending time gathering
+              information about the needed requirements from the domain experts.
+              The Grammar rules will come and get improved over and over again
+              out of the final, end domain expert users feedback.
             </p>
             <p>
               In our example, the domain becomes the issues we deal with in our

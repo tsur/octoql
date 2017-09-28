@@ -6,21 +6,19 @@ import { Container } from './wrappers';
 // import * as sdk from 'sdk'; //rx, ramda, superagent, evetnsource, url, events, loglevel
 
 function PanelContainer(props) {
-  const defaultTextPanel = 'Your story begins here ...';
-  const defaultQueryPanel = 'take 5';
-
   return (
     <Container>
-      {props.type === 'text'
-        ? <TextPanel text={props.content || defaultTextPanel} />
-        : <QueryPanel query={props.content || defaultQueryPanel} />}
+      {props.panel.type === 'text'
+        ? <TextPanel panel={props.panel} id={props.id} path={props.path} />
+        : <QueryPanel panel={props.panel} id={props.id} path={props.path} />}
     </Container>
   );
 }
 
 PanelContainer.propTypes = {
-  type: PropTypes.string,
-  content: PropTypes.string,
+  panel: PropTypes.object,
+  id: PropTypes.number,
+  path: PropTypes.string,
 };
 
 export default PanelContainer;

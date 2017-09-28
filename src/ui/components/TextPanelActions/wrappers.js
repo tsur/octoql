@@ -27,6 +27,8 @@ export const TextIcon = styled(Octicon)`
   position: relative;
   top: ${(props) => (props && props.small ? '-2' : '0')}px;
   left: ${(props) => (props && props.small ? '-5' : '0')}px;
+  padding-left: 15px;
+  padding-top: 2px;
   font-size: ${(props) => (props && props.small ? '14' : '28')}px;
   margin-left: ${(props) => (props && props.small ? '0' : '20')}px;
   vertical-align: middle;
@@ -41,7 +43,6 @@ export const TextIcon = styled(Octicon)`
 export const Div = styled.div`
   display: table;
   width: 100%;
-  height: 100%;
   &:hover ~ div {
     ${visible};
   }
@@ -49,13 +50,6 @@ export const Div = styled.div`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-export const QueryContainer = styled.div`
-  position: relative;
-  top: -10px;
-  &:hover > div {
-    ${visible};
-  }
 `;
 
 export const Menu = styled.div`
@@ -67,14 +61,14 @@ export const Menu = styled.div`
   opacity: 0;
   padding: 0px 20px;
   position: absolute;
-  right: ${(props) => (props && props.panel === 'text' ? '55' : '25')}px;
+  right: 55px;
   width: 180px;
   display: none;
   transition: opacity .25s ease-out;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
   user-select: none;
-  ${(props) =>
-    props && props.panel === 'text' ? 'margin-top: 11' : 'top: 10'}px;
+  margin-top: 11px;
+  margin-bottom: 20px;
 
   &:hover {
     ${visible};

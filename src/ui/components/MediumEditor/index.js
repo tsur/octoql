@@ -68,11 +68,15 @@ class ReactMediumEditor extends React.Component {
       this.medium.saveSelection();
     }
 
-    return React.createElement(tag, props);
+    return React.createElement(tag, {
+      onBlur: (event) => props.onSave(this.medium.getContent(0)),
+      ...props,
+    });
   }
 }
 
 ReactMediumEditor.propTypes = {
+  onSave: PropTypes.func,
   onChange: PropTypes.func,
   text: PropTypes.string,
   tag: PropTypes.string,

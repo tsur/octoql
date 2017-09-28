@@ -83,7 +83,7 @@ export function Results(props) {
     <TableWrapper>
       <TableContainer>
         <TableHeader>
-          {Object.keys(props.issues[0]).map((issueField, i) =>
+          {Object.keys(props.issues[0]).sort().map((issueField, i) =>
             <Field>
               {issueField}
             </Field>
@@ -91,9 +91,9 @@ export function Results(props) {
         </TableHeader>
         {props.issues.map((issue, i) =>
           <TableBody even={(i + 1) % 2}>
-            {Object.keys(issue).map((issueField, i) =>
+            {Object.keys(issue).sort().map((issueField, i) =>
               <Field>
-                {issue[issueField] || issueField}
+                {issue[issueField] ? JSON.stringify(issue[issueField]) : ''}
               </Field>
             )}
           </TableBody>
