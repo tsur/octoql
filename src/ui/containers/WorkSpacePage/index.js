@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import BlogPost from 'ui/containers/BlogPost';
 import { getNotebookContent } from 'ui/utils/resources';
 import { changeResourceSelected } from 'ui/containers/ResourcesTree/actions';
 import PanelContainer from 'ui/components/PanelContainer';
@@ -49,6 +50,7 @@ export class WorkSpacePage extends React.Component {
           )}
         </Scroll>
       </Container>
+      // <BlogPost />
     );
   }
 }

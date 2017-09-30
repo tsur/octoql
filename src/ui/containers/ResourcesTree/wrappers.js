@@ -284,8 +284,14 @@ Tree.propTypes = {
 
 export const Container = styled.div`
   display: flex;
-  background-color: #161719;
-  color: #a3a8ae;
+  background-color: ${(props) =>
+    props.theme && props.theme.sidebar.bgColor
+      ? props.theme.sidebar.bgColor
+      : '#161719'};
+  color: ${(props) =>
+    props.theme && props.theme.sidebar.color
+      ? props.theme.sidebar.color
+      : '#a3a8ae'};
   position: relative;
   box-sizing: border-box;
   height: initial;
@@ -300,7 +306,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  border-right: 1px solid #27292c;
+  border-right: ${(props) =>
+    props.theme && props.theme.sidebar.border
+      ? props.theme.sidebar.border
+      : '1px solid #27292c'};
 `;
 
 const GlobalScrollContainer = styled.div`
@@ -328,7 +337,10 @@ export const GlobalScroll = ({ children }) =>
 
 export const TreeScroll = styled.div`
   border-image: none;
-  border-bottom: 1px solid #111314;
+  border-bottom: ${(props) =>
+    props.theme && props.theme.sidebar.border
+      ? props.theme.sidebar.border
+      : '1px solid #111314'};
   order: 0;
   border-width: 0 0 1px 0;
   display: flex;
@@ -341,7 +353,6 @@ export const TreeScroll = styled.div`
 const ActionsDiv = styled.div`
   height: 40px;
   width: 100%;
-  border-top: 1px solid #27292c;
   text-align: center;
   display: table;
   cursor: pointer;

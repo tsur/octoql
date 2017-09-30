@@ -11,9 +11,15 @@ export const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0;
-  background-color: #161719;
+  background-color: ${(props) =>
+    props.theme && props.theme.footer.bgColor
+      ? props.theme.footer.bgColor
+      : '#161719'};
   height: 3.0em;
-  border-top: 1px solid #27292c; /*rgba(115, 170, 100, 0.3);*/
+  border-top: ${(props) =>
+    props.theme && props.theme.footer.border
+      ? props.theme.footer.border
+      : '1px solid #27292c;'}; /*rgba(115, 170, 100, 0.3);*/
 `;
 
 export const StatusBar = styled.div`

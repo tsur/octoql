@@ -10,6 +10,10 @@ export default defineMessages({
     id: 'octoql.containers.App.actions.changeLang',
     defaultMessage: 'Change Language',
   },
+  changeTheme: {
+    id: 'octoql.containers.App.actions.changeTheme',
+    defaultMessage: 'Change Theme',
+  },
   addNotebook: {
     id: 'octoql.containers.App.actions.addNotebook',
     defaultMessage: 'Add Notebook',

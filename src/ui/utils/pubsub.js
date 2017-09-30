@@ -4,6 +4,7 @@ import PubSub from 'pubsub-js';
 PubSub.topics = {
   FUZZY_FINDER_REQUIRED: 'FUZZY_FINDER_REQUIRED', // Fired when a component requires the fuzzy finder
   FUZZY_FINDER_LANG_ITEM_SELECTED: 'FUZZY_FINDER_LANG_ITEM_SELECTED', // Fired when user selects a language in the fuzzy finder
+  FUZZY_FINDER_THEME_ITEM_SELECTED: 'FUZZY_FINDER_THEME_ITEM_SELECTED', // Fired when user selects a language in the fuzzy finder
   FUZZY_FINDER_NOTEBOOK_ITEM_ADDED: 'FUZZY_FINDER_NOTEBOOK_ITEM_ADDED', // Fired when user adds a notebook in the fuzzy finder
   FUZZY_FINDER_CLOSED: 'FUZZY_FINDER_CLOSED', // Fired when user adds a notebook in the fuzzy finder
   HELPER_TOUR_TIP_OPENED: 'HELPER_TOUR_TIP_OPENED', // Fired when user opens a tip

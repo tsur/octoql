@@ -20,28 +20,8 @@ injectGlobal`
   }
 
   #app {
-    background-color: #161719;
-    color: #a3a8ae;
-    font-size: 11px;
     min-height: 100%;
     min-width: 100%;
   }
 
-  ::-webkit-scrollbar {
-      width: 0.5em;
-      height: 0.5em;
-  }
-
-  ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  }
-
-  ::-webkit-scrollbar-thumb {
-      background: rgb(60, 60, 60);
-  }
-
-  ::-webkit-scrollbar-corner,
-  ::-webkit-scrollbar-thumb:window-inactive {
-      background: rgb(60, 60, 60);
-  }
 `;

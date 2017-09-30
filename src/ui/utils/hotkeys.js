@@ -1,6 +1,7 @@
 // Uses mouse-trap key bindings
 export default {
   CHANGE_LANG: { keys: 'alt+l', default: false },
+  CHANGE_THEME: { keys: 'alt+t', default: false },
   ADD_NOTEBOOK: { keys: 'alt+n', default: false },
   OPEN_NOTEBOOK: { keys: 'alt+o', default: false },
   RUN_NOTEBOOK: { keys: 'Shift-Enter', default: false }, // Uses codemirror keybindings

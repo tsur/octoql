@@ -17,6 +17,10 @@
     "Type the notebook you want to add with the format <username>/<repository>/<notebook_title> (for example, \"tsur/octoql/notebook1\"). This can also be a valid Github URL (https://github.com/tsur/octoql)",
   "octoql.containers.App.actions.addNotebook": "Add Notebook",
   "octoql.containers.App.actions.changeLang": "Change Language",
+  "octoql.containers.App.actions.changeTheme": "Change Theme",
   "octoql.containers.App.actions.openNotebook": "Open Notebook",
-  "octoql.containers.WorkSpacePage.title": "Notebook"
+  "octoql.containers.WorkSpacePage.title": "Notebook",
+  "octoql.containers.ThemeProvider.themes.dark": "Dark",
+  "octoql.containers.ThemeProvider.themes.light": "Light",
+  "octoql.containers.ThemeProvider.themes.monokai": "Monokai"
 }

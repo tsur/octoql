@@ -3,6 +3,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import Octicon from 'react-octicon';
 import LocaleToggle from 'ui/containers/LocaleToggle';
+import ThemeToggle from 'ui/containers/ThemeToggle';
 import {
   Footer as FooterContainer,
   StatusBar,
@@ -20,7 +21,7 @@ export default function Footer() {
       <StatusBar>
         <StatusBarLeft>
           <StatusBarImportantIcon>
-            <Octicon name="home" />{' '}
+            <Octicon name="home" />
             <A to="/">
               <em>Home</em>
             </A>
@@ -37,9 +38,7 @@ export default function Footer() {
         </StatusBarLeft>
         <StatusBarRight>
           <LocaleToggle />
-          <span>
-            <Octicon name="paintcan" /> <em>Themes</em>
-          </span>
+          <ThemeToggle />
           <StatusBarSecondaryIcon>
             <Octicon name="sync" /> <em>Sync</em>
           </StatusBarSecondaryIcon>

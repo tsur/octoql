@@ -58,6 +58,11 @@ class App extends React.Component {
           hint: HotKeys.CHANGE_LANG.keys,
         },
         {
+          value: HotKeys.CHANGE_THEME.keys,
+          title: messages.changeTheme.id,
+          hint: HotKeys.CHANGE_THEME.keys,
+        },
+        {
           value: HotKeys.ADD_NOTEBOOK.keys,
           title: messages.addNotebook.id,
           hint: HotKeys.ADD_NOTEBOOK.keys,
@@ -98,7 +103,9 @@ class App extends React.Component {
         <Article>
           <ResourcesTree />
           {React.Children.toArray(this.props.children)}
-          <BlogPost />
+          {this.props.location.pathname.includes('/notebooks/')
+            ? <BlogPost />
+            : null}
         </Article>
         <Footer />
         <FuzzyFinder />
