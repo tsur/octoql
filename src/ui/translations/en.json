@@ -8,6 +8,7 @@
   "octoql.components.HelperTour.tree.message":
     "From this area you may access all notebooks organized by user and repository",
   "octoql.components.HomePage.help": "Discover all you can do with",
+  "octoql.components.HomePage.tutorial": "Try it",
   "octoql.components.HomePage.subheader": "The Github Query Language",
   "octoql.components.HomePage.header": "OctoQL",
   "octoql.components.LanguageProvider.eng": "English",

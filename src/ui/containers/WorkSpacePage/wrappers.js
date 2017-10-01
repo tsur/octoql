@@ -24,3 +24,10 @@ export const Scroll = styled.section`
   padding-top: 15px;
   padding-bottom: 10px;
 `;
+
+export const Div = styled.div`
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+`;

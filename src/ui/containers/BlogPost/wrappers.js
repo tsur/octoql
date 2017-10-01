@@ -8,7 +8,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  background-color: #161719;
+  background-color: ${(props) =>
+    props.theme && props.theme.blog.bgColor
+      ? props.theme.blog.bgColor
+      : '#161719'};
   color: #a3a8ae;
   position: relative;
   box-sizing: border-box;
@@ -23,7 +26,10 @@ export const Container = styled.div`
   flex-direction: column;
   flex: 1 1 auto;
   padding: 10px 0 0 5px;
-  border-left: 1px solid #27292c;
+  border-left: ${(props) =>
+    props.theme && props.theme.blog.border
+      ? props.theme.blog.border
+      : '1px solid #27292c'};
   font-size: 14px;
   ${(props) => !props.expanded && 'max-width: 0px;'};
 `;
@@ -40,7 +46,10 @@ export const GlobalScroll = styled.div`
 `;
 
 export const ContainerSwitcher = styled.span`
-  background: rgb(60, 60, 60);
+  background: ${(props) =>
+    props.theme && props.theme.blog.switcherBgColor
+      ? props.theme.blog.switcherBgColor
+      : 'rgb(60, 60, 60)'};
   display: inline-block;
   border-bottom-left-radius: 60px;
   border-top-left-radius: 60px;
@@ -64,6 +73,10 @@ export const ContainerSwitcher = styled.span`
     -webkit-font-smoothing: antialiased;
     position: relative;
     top: -2px;
+    color: ${(props) =>
+      props.theme && props.theme.blog.switcherColor
+        ? props.theme.blog.switcherColor
+        : 'rgb(60, 60, 60)'};
   }
 `;
 

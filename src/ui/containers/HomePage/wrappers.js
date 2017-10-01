@@ -5,6 +5,7 @@
 
 /* System imports */
 import styled from 'styled-components';
+import { Link } from 'react-router';
 
 export const Container = styled.article`
   position: relative;
@@ -30,6 +31,8 @@ export const MessageCentered = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   align-items: center;
   text-align: center;
   font-size: 36px;
@@ -65,7 +68,7 @@ export const KeyStroke = styled.span`
   padding: 0 5px;
   border-radius: 9px;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  margin-left: 15px;
+  margin-left: 8px;
   transition: color .5s ease-in-out;
   color: rgba(163, 168, 174, 0.3);
   cursor: pointer;
@@ -85,3 +88,35 @@ export const Intro = styled.div`
 `;
 export const LogoTitle = styled.span`font-size: 44px;`;
 export const Help = styled.span`font-size: 17px;`;
+
+export const Button = styled(Link)`
+
+  text-decoration: none;
+  border-radius: 2px;
+  /* outline: none; */
+  border: 1px solid rgba(100,148,237,0.6);
+  padding: 8px;
+  display: block;
+  width: 80px;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 0.5em;
+  color: rgba(100,148,237,0.6);
+  text-transform: uppercase;
+  background-color: transparent;
+  word-spacing: 4px;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid
+      ${(props) =>
+        props.theme && props.theme.home.tryButtonHoverColor
+          ? props.theme.home.tryButtonHoverColor
+          : 'rgba(255, 255, 255, 0.6)'};
+    color: ${(props) =>
+      props.theme && props.theme.home.tryButtonHoverColor
+        ? props.theme.home.tryButtonHoverColor
+        : 'rgba(255, 255, 255, 0.6)'};
+  }
+`;

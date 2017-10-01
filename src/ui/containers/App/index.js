@@ -103,9 +103,7 @@ class App extends React.Component {
         <Article>
           <ResourcesTree />
           {React.Children.toArray(this.props.children)}
-          {this.props.location.pathname.includes('/notebooks/')
-            ? <BlogPost />
-            : null}
+          {/* <BlogPost /> */}
         </Article>
         <Footer />
         <FuzzyFinder />

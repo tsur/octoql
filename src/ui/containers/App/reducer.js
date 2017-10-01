@@ -38,17 +38,23 @@ const initialState = fromJS({
           panels: [
             {
               type: 'text',
-              content: '<h1>An OctoQL Notebook ...</h1>',
+              content: '<h1>OctoQL Tutorial Notebook</h1>',
               removable: false,
             },
+            // {
+            //   type: 'text',
+            //   content:
+            //     'Before going on forward, please take a time apart to read the tutorial section on your right to get introduced to DSL development if interested. Otherwise, just start playing around with the queries below ...',
+            //   removable: false,
+            // },
             {
               type: 'text',
-              content: 'What do I need to work in today ?',
+              content: 'Query 1: What do I need to work in today ?',
               removable: false,
             },
             {
               type: 'query',
-              content: `-- Press Enter+Shift To Run
+              content: `-- Press Shift+Enter To Run
 from tsur/octoql
 where assigned == me
 take 5`,
@@ -56,12 +62,12 @@ take 5`,
             },
             {
               type: 'text',
-              content: 'Too much information ... just a quick view',
+              content: 'Query 2: Too much information ... just a quick view',
               removable: false,
             },
             {
               type: 'query',
-              content: `-- Press Enter+Shift To Run
+              content: `-- Press Shift+Enter To Run
 from tsur/octoql
 select title
 where assigned == me
@@ -70,36 +76,37 @@ take 5`,
             },
             {
               type: 'text',
-              content: 'Something really urgent that requires my attention ?',
+              content:
+                'Query 3: Something really urgent that requires my attention ?',
               removable: false,
             },
             {
               type: 'query',
-              content: `-- Press Enter+Shift To Run
+              content: `-- Press Shift+Enter To Run
 from tsur/octoql
 where labels contains "urgent" and labels not contains "merged"`,
               removable: false,
             },
             {
               type: 'text',
-              content: 'These issues could be fixed later ...',
+              content: 'Query 4: These issues could be fixed later ...',
               removable: false,
             },
             {
               type: 'query',
-              content: `-- Press Enter+Shift To Run
+              content: `-- Press Shift+Enter To Run
 from tsur/octoql
 where labels not contains "urgent" and labels not contains "merged"`,
               removable: false,
             },
             {
               type: 'text',
-              content: 'These issues could be closed ...',
+              content: 'Query 5: These issues could be closed ...',
               removable: false,
             },
             {
               type: 'query',
-              content: `-- Press Enter+Shift To Run
+              content: `-- Press Shift+Enter To Run
 from tsur/octoql
 where labels contains "merged" or creation_date <= 2.months.ago`,
               removable: false,

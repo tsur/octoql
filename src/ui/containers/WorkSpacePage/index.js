@@ -15,7 +15,7 @@ import { changeResourceSelected } from 'ui/containers/ResourcesTree/actions';
 import PanelContainer from 'ui/components/PanelContainer';
 import { selectResources, selectResource } from './selectors';
 import messages from './messages';
-import { Container, Scroll } from './wrappers';
+import { Container, Scroll, Div } from './wrappers';
 
 export class WorkSpacePage extends React.Component {
   componentDidMount() {
@@ -31,26 +31,28 @@ export class WorkSpacePage extends React.Component {
       location.pathname.replace('/notebooks/', '')
     );
     return (
-      <Container>
-        <Helmet
-          title={`${notebook.title} - OctoQL Notebook`}
-          meta={[
-            { name: 'description', content: 'Description of WorkSpacePage' },
-          ]}
-        />
-        <Scroll>
-          {notebook.panels.map((panel, i) =>
-            <PanelContainer
-              className="talo-editor"
-              panel={panel}
-              key={i}
-              id={i}
-              path={location.pathname.replace('/notebooks/', '')}
-            />
-          )}
-        </Scroll>
-      </Container>
-      // <BlogPost />
+      <Div>
+        <Container>
+          <Helmet
+            title={`${notebook.title} - OctoQL Notebook`}
+            meta={[
+              { name: 'description', content: 'Description of WorkSpacePage' },
+            ]}
+          />
+          <Scroll>
+            {notebook.panels.map((panel, i) =>
+              <PanelContainer
+                className="talo-editor"
+                panel={panel}
+                key={i}
+                id={i}
+                path={location.pathname.replace('/notebooks/', '')}
+              />
+            )}
+          </Scroll>
+        </Container>
+        <BlogPost />
+      </Div>
     );
   }
 }

@@ -76,7 +76,7 @@ class BlogPost extends React.Component {
               In our first post, we made a general introduction to this topic,
               but did not get our hands into the job. This time we'll make it by
               designing and implementing an interesting case of a domain
-              specific language. We're gonna learn so much, believe me!
+              specific language: OctoQL.
             </p>
             <p>
               Domain specific languages can be shaped as internal/embebbed and

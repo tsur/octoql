@@ -25,6 +25,13 @@ export const dark = {
     color: 'rgba(255, 255, 255, 0.35)',
     titleColor: 'rgba(163, 168, 174, 0.3)',
     svgColor: 'rgba(163, 168, 174, 0.1)',
+    tryButtonHoverColor: 'rgba(255, 255, 255, 0.6)',
+  },
+  blog: {
+    bgColor: '#161719',
+    border: '1px solid #27292c',
+    switcherBgColor: 'rgb(60, 60, 60)',
+    switcherColor: 'inherit',
   },
 };
 export const monokai = {
@@ -54,6 +61,13 @@ export const monokai = {
     color: 'rgba(255, 255, 255, 0.35)',
     titleColor: 'rgba(163, 168, 174, 0.3)',
     svgColor: 'rgba(163, 168, 174, 0.1)',
+    tryButtonHoverColor: 'rgba(255, 255, 255, 0.6)',
+  },
+  blog: {
+    bgColor: '#2d2c2c',
+    border: '1px solid rgba(163,168,174,0.1)',
+    switcherBgColor: '#979797',
+    switcherColor: 'rgb(60, 60, 60)',
   },
 };
 export const light = {
@@ -83,5 +97,12 @@ export const light = {
     color: '#979797',
     titleColor: '#cecbcb',
     svgColor: 'rgba(163, 168, 174, 0.8)',
+    tryButtonHoverColor: 'rgba(100, 100, 100, 0.6)',
+  },
+  blog: {
+    bgColor: '#f5f5f5',
+    border: '1px solid rgba(163,168,174,0.2)',
+    switcherBgColor: 'transparent',
+    switcherColor: 'rgb(60, 60, 60)',
   },
 };

@@ -22,7 +22,8 @@ import {
 } from './wrappers';
 import octoqlMode from './octoql';
 
-const defaultQueryPanel = '-- Type your query here and hit Shift+Run to run';
+const defaultQueryPanel =
+  '-- Type your query here and press Shift+Enter to run';
 
 class QueryPanel extends React.Component {
   constructor(props) {
@@ -106,7 +107,7 @@ class QueryPanel extends React.Component {
     this.editor.getWrapperElement().style['background-color'] =
       this.editor.getWrapperElement().style['background-color'] ===
       'rgba(96, 146, 237, 0.1)'
-        ? '#161719'
+        ? 'transparent'
         : 'rgba(96, 146, 237, .1)';
     // 'rgba(0, 0, 0, 0.5)';
   }

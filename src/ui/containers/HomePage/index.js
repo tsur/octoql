@@ -25,6 +25,7 @@ import {
   LogoTitle,
   Help,
   Intro,
+  Button,
 } from './wrappers';
 
 export default class HomePage extends React.PureComponent {
@@ -62,8 +63,13 @@ export default class HomePage extends React.PureComponent {
                   </KeyStroke>
                 </Help>
               </MessageListItem>
+              <MessageListItem>
+                <Button to="notebooks/tsur/octoql/example">
+                  <FormattedMessage {...messages.tutorial} />
+                </Button>
+              </MessageListItem>
             </MessageList>
-            <Intro>
+            {/* <Intro>
               <p>
                 Data is probably the most valuable and requested asset all over
                 the world. We humans are eager to consume it and are constantly
@@ -79,18 +85,6 @@ export default class HomePage extends React.PureComponent {
                 by designing and implementing an interesting case of a domain
                 specific language: OctoQL.
               </p>
-              {/* <p>
-                Domain specific languages can be shaped as internal or embebbed and
-                as externals. Whereas the embedded/ internal DSL are limited by
-                the host language they are built on top of, the external ones
-                can be more expressive at cost of requiring further tooling and
-                higher maintenance efforts.We'll work out an external DSL
-                solution for learning purposes as most of well known DSL
-                implementations are external. Some examples might include SQL,
-                HTML or CSS, to name a few. To make this exercise easier to
-                follow, we'll work with one of the most well known development
-                platform. Yep, I'm talking about Github.
-              </p> */}
               <p>
                 Working with Github issues is sometimes a bit annoying,
                 specially when dealing with complex filters. Retrieving all
@@ -127,7 +121,7 @@ export default class HomePage extends React.PureComponent {
                 more PEG-based solutions at http://bford.info/packrat/
               </p>
               <p>Continue by opening the example notebook at the sidebar menu  to learn how to use OctoQL and to lear how to implement a DSL like it!</p>
-            </Intro>
+            </Intro> */}
           </MessageCentered>
         </MessageContainer>
       </Container>

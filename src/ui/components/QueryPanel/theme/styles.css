@@ -57,7 +57,8 @@
   border-left: 1px solid rgba(255, 255, 255, 0.6);
 }
 .cm-s-talo {
-  background-color: #161719;
+  /* background-color: #161719; */
+  background-color: transparent;
   color: grey;
   border-radius: 3px;
   padding: 2px;

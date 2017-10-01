@@ -10,6 +10,10 @@ export default defineMessages({
     id: 'octoql.components.HomePage.help',
     defaultMessage: 'Discover all you can do with',
   },
+  tutorial: {
+    id: 'octoql.components.HomePage.tutorial',
+    defaultMessage: 'Try it',
+  },
   header: {
     id: 'octoql.components.HomePage.header',
     defaultMessage: 'OctoQL',

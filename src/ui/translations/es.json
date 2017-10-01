@@ -8,6 +8,7 @@
   "octoql.components.HelperTour.tree.message":
     "Desde esta área podrá acceder a todos sus notebooks organizados por nombre de usuario y repositorio",
   "octoql.components.HomePage.help": "Descubre que puedes hacer pulsado",
+  "octoql.components.HomePage.tutorial": "Pruébalo",
   "octoql.components.HomePage.subheader":
     "El lenguaje de dominio específico para Github",
   "octoql.components.HomePage.header": "OctoQL",
