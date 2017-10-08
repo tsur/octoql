@@ -8,7 +8,7 @@ describe('comment statement', function() {
     from: { user: 'user', repo: 'repo' },
     select: null,
     where: null,
-    take: null
+    limit: null
   };
 
   it('should fail(throw) if no user or repo is given', function() {

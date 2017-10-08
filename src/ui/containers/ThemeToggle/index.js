@@ -8,6 +8,7 @@ import React from 'react';
 import { mouseTrap } from 'react-mousetrap';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import { FormattedMessage } from 'react-intl';
 import Octicon from 'react-octicon';
 import HotKeys from 'ui/utils/hotkeys';
 import PubSub from 'ui/utils/pubsub';
@@ -15,6 +16,7 @@ import { getThemeItems } from 'ui/containers/ThemeProvider/utils';
 import { makeSelectThemeName } from 'ui/containers/ThemeProvider/selectors';
 import { changeTheme } from 'ui/containers/ThemeProvider/actions';
 import { Span } from './wrappers';
+import messages from './messages';
 
 class ThemeToggle extends React.Component {
   componentWillMount() {
@@ -57,7 +59,7 @@ class ThemeToggle extends React.Component {
   render() {
     return (
       <Span title={this.props.theme} onClick={() => this.openFuzzyFinder()}>
-        <Octicon name="paintcan" /> <em>Themes</em>
+        <Octicon name="paintcan" /> <em><FormattedMessage {...messages.themes} /></em>
       </Span>
     );
   }

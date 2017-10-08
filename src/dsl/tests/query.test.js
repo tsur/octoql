@@ -11,19 +11,19 @@ describe('Full query', function() {
       groups: []
     },
     select: ['field1', 'field2'],
-    take: 10
+    limit: 10
   };
 
   it('should not fail(throw) if query contains all keywords', function() {
     const input =
-      'from user/repo select field1, field2 where a equals b take 10';
+      'from user/repo select field1, field2 where a equals b limit 10';
     expect(() => Parser.parse(input)).not.toThrow();
     expect(Parser.parse(input)).toEqual({ ...queryResponse });
   });
 
   it('should not fail(throw) if query is case insensitive', function() {
     const input =
-      'FroM user/repo seLeCT field1, field2 whErE a equals b tAkE 10';
+      'FroM user/repo seLeCT field1, field2 whErE a equals b liMiT 10';
     expect(() => Parser.parse(input)).not.toThrow();
     expect(Parser.parse(input)).toEqual({ ...queryResponse });
   });
@@ -33,7 +33,7 @@ describe('Full query', function() {
     FroM user/repo
     seLeCT field1, field2
     wHeRe a equals b
-    tAkE 10`;
+    liMiT 10`;
     expect(() => Parser.parse(input)).not.toThrow();
     expect(Parser.parse(input)).toEqual({ ...queryResponse });
   });
@@ -42,13 +42,13 @@ describe('Full query', function() {
     const input = `
     FroM user/repo        seLeCT field1, field2
           wHeRe a equals b
-                tAkE 10`;
+                liMiT 10`;
     expect(() => Parser.parse(input)).not.toThrow();
     expect(Parser.parse(input)).toEqual({ ...queryResponse });
   });
 
   it('should not fail(throw) if query contains whitespaces', function() {
-    const input = `FroM           user/repo     seLeCT         field1,        field2           wHeRe a equals              b      tAkE        10`;
+    const input = `FroM           user/repo     seLeCT         field1,        field2           wHeRe a equals              b      liMiT        10`;
     expect(() => Parser.parse(input)).not.toThrow();
     expect(Parser.parse(input)).toEqual({ ...queryResponse });
   });

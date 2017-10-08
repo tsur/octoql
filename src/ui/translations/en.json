@@ -1,5 +1,10 @@
 {
+  "octoql.components.Footer.home": "Home",
+  "octoql.components.Footer.bugs": "Bugs",
   "octoql.components.Footer.license": "MIT",
+  "octoql.components.Footer.language": "Language",
+  "octoql.components.Footer.themes": "Themes",
+  "octoql.components.Footer.sync": "Save",
   "octoql.components.FuzzyFinder.notFound": "No matches found",
   "octoql.components.HelperTour.footer.left.message":
     "Use the actions below to access home section or to report bugs",
@@ -20,8 +25,10 @@
   "octoql.containers.App.actions.changeLang": "Change Language",
   "octoql.containers.App.actions.changeTheme": "Change Theme",
   "octoql.containers.App.actions.openNotebook": "Open Notebook",
+  "octoql.containers.App.actions.saveNotebooks": "Save Notebooks",
   "octoql.containers.WorkSpacePage.title": "Notebook",
   "octoql.containers.ThemeProvider.themes.dark": "Dark",
   "octoql.containers.ThemeProvider.themes.light": "Light",
-  "octoql.containers.ThemeProvider.themes.monokai": "Monokai"
+  "octoql.containers.ThemeProvider.themes.monokai": "Monokai",
+  "octoql.components.Notifications.saved": "Notebooks were saved locally"
 }

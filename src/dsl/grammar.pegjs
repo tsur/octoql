@@ -31,19 +31,19 @@ singleLineComment
   = "--" (!lineTerminator sourceCharacter)*
 
 query
-  = comment? f:from s:select? w:where? t:take? { return {from:f, select:s, where:w, take:t} }
+  = comment? f:from s:select? w:where? t:limit? { return {from:f, select:s, where:w, limit:t} }
 
-from "From"
+from "From Statement"
   = ws* "from"i ws+ user:word '/' repo:word { return {user, repo}; }
 
-select "Select"
+select "Select Statement"
   = ws+ "select"i ws+ fields:list_words { return fields; }
 
-where "Where"
+where "Where Statement"
   = ws+ "where"i ws+ filters:list_filters { return filters; }
 
-take "Take"
-  = ws+ "take"i ws+ t:digit { return t ? t : 0; }
+limit "Limit Statement"
+  = ws+ "limit"i ws+ t:digit { return t ? t : 0; }
 
 list_words
   = w1:(comma_list_words)* w2:word { return concat(w1, w2); }

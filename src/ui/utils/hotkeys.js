@@ -4,6 +4,7 @@ export default {
   CHANGE_THEME: { keys: 'alt+t', default: false },
   ADD_NOTEBOOK: { keys: 'alt+n', default: false },
   OPEN_NOTEBOOK: { keys: 'alt+o', default: false },
+  SAVE_NOTEBOOKS: { keys: 'alt+s', default: false },
   RUN_NOTEBOOK: { keys: 'Shift-Enter', default: false }, // Uses codemirror keybindings
   MOVE_DOWN_FUZZY_FINDER: { keys: 'down', default: true },
   MOVE_UP_FUZZY_FINDER: { keys: 'up', default: true },

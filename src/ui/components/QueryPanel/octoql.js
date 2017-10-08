@@ -21,7 +21,7 @@ export default function (CodeMirror) {
         return 'octo-date';
       }
 
-      if (stream.match(/(?:select|from|take|where)/)) {
+      if (stream.match(/(?:select|from|limit|where)/)) {
         return 'octo-keyword';
       }
 
@@ -69,7 +69,7 @@ export default function (CodeMirror) {
   //       // Rules are matched in the order in which they appear, so there is
   //       // no ambiguity between this one and the one above
   //       {
-  //         regex: /(?:select|from|take|where)\b/,
+  //         regex: /(?:select|from|limit|where)\b/,
   //         token: 'keyword',
   //       },
   //       { regex: /true|false|null|undefined/, token: 'atom' },

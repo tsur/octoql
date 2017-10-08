@@ -8,6 +8,7 @@ import React from 'react';
 import { mouseTrap } from 'react-mousetrap';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import { FormattedMessage } from 'react-intl';
 import Octicon from 'react-octicon';
 import HotKeys from 'ui/utils/hotkeys';
 import PubSub from 'ui/utils/pubsub';
@@ -16,6 +17,7 @@ import { getLangItems } from 'ui/utils/helper';
 import { makeSelectLocale } from 'ui/containers/LanguageProvider/selectors';
 import { changeLocale } from 'ui/containers/LanguageProvider/actions';
 import { Span } from './wrappers';
+import messages from './messages';
 
 class LocaleToggle extends React.Component {
   componentWillMount() {
@@ -58,7 +60,7 @@ class LocaleToggle extends React.Component {
   render() {
     return (
       <Span title={this.props.locale} onClick={() => this.openFuzzyFinder()}>
-        <Octicon name="globe" /> <em>Language</em>
+        <Octicon name="globe" /> <em><FormattedMessage {...messages.language} /></em>
       </Span>
     );
   }

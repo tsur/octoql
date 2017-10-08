@@ -95,9 +95,8 @@ export const Button = styled(Link)`
   border-radius: 2px;
   /* outline: none; */
   border: 1px solid rgba(100,148,237,0.6);
-  padding: 8px;
-  display: block;
-  width: 80px;
+  padding: 8px 12px;
+  display: inline-block;
   margin: 0 auto;
   margin-top: 20px;
   font-size: 0.5em;

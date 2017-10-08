@@ -22,6 +22,10 @@ export default defineMessages({
     id: 'octoql.containers.App.actions.openNotebook',
     defaultMessage: 'Open Notebook',
   },
+  saveNotebooks: {
+    id: 'octoql.containers.App.actions.saveNotebooks',
+    defaultMessage: 'Save Notebooks',
+  },
   englishLang: {
     id: 'octoql.components.LanguageProvider.eng',
     defaultMessage: 'English',

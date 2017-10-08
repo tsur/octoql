@@ -13,8 +13,10 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { platformKeySymbols } from 'ui/utils/helper';
+import Octicon from 'react-octicon';
 import Logo from 'ui/components/Logo';
 import messages from './messages';
+import { getRoute } from 'ui/utils/url';
 import {
   Container,
   MessageContainer,
@@ -28,7 +30,15 @@ import {
   Button,
 } from './wrappers';
 
-export default class HomePage extends React.PureComponent {
+export default class HomePage extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      loading: false
+    }
+  }
+
   // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -64,8 +74,12 @@ export default class HomePage extends React.PureComponent {
                 </Help>
               </MessageListItem>
               <MessageListItem>
-                <Button to="notebooks/tsur/octoql/example">
-                  <FormattedMessage {...messages.tutorial} />
+                <Button 
+                  to={getRoute('/notebooks/tsur/octoql/example')} 
+                  onClick={()=> this.setState({loading: true})}>
+                  <FormattedMessage {...messages.tutorial} /> 
+                  {this.state.loading &&
+                  <Octicon name="mark-github" spin style={{marginLeft: '10px'}}/>}
                 </Button>
               </MessageListItem>
             </MessageList>

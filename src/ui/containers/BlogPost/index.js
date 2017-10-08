@@ -267,9 +267,9 @@ integer
               aggregations and more powerful analysis over our Gitub issues. The
               possibilities are many and it will depend in a great extend on the
               users needs and what they demands as domain experts. Feel free to
-              check the final grammar here.
+              check the final grammar here and to contribute if interested.
             </p>
-            <p>Happy dsling ;)</p>
+            <p>Happy dsling ^^</p>
           </Div>
           <Div visible={this.state.chapter === 'references'}>
             <p>

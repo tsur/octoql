@@ -19,16 +19,23 @@ import {
   UPDATE_PANEL,
   REMOVE_PANEL,
 } from 'ui/components/TextPanelActions/constants';
-import { CHANGE_RESOURCE_SELECTED, ADD_RESOURCE } from './constants';
+import { 
+  CHANGE_RESOURCE_SELECTED, 
+  ADD_RESOURCE, 
+  SAVE_NOTEBOOKS, 
+  REMOVE_NOTIFICATION,
+} from './constants';
 
+const persistedStore = localStorage.getItem('notebooks');
 // The initial state of the App
-const initialState = fromJS({
+const initialState = persistedStore ? fromJS(JSON.parse(persistedStore)) : fromJS({
   app: {
     license: 'MIT',
     loading: false,
     error: false,
     language: 'en',
     theme: 'default',
+    notifications: [],
     resource: '', // 'tsur/octoql/example',
   },
   resources: {
@@ -56,8 +63,7 @@ const initialState = fromJS({
               type: 'query',
               content: `-- Press Shift+Enter To Run
 from tsur/octoql
-where assigned == me
-take 5`,
+limit 5`,
               removable: false,
             },
             {
@@ -70,8 +76,8 @@ take 5`,
               content: `-- Press Shift+Enter To Run
 from tsur/octoql
 select title
-where assigned == me
-take 5`,
+where state == "open"
+limit 5`,
               removable: false,
             },
             {
@@ -108,7 +114,7 @@ where labels not contains "urgent" and labels not contains "merged"`,
               type: 'query',
               content: `-- Press Shift+Enter To Run
 from tsur/octoql
-where labels contains "merged" or creation_date <= 2.months.ago`,
+where labels contains "merged" or created_at <= 2.months.ago`,
               removable: false,
             },
           ],
@@ -166,7 +172,7 @@ function appReducer(state = initialState, action) {
       if (!/^([a-zA-Z0-9_\-/:.]+)$/.test(path)) return state;
       const localState = state.setIn(['app', 'resource'], path);
       // Remove empty values in array
-      const aNewResourcePath = path.split('/');
+      const aNewResourcePath = path.split('/').filter(p => !_.isEmpty(p));
       if (_.size(aNewResourcePath) !== 3) {
         return state;
       }
@@ -212,6 +218,21 @@ function appReducer(state = initialState, action) {
       return state.updateIn(
         ['resources'].concat(action.path.split('/')).concat(['panels']),
         (panels) => panels.delete(action.id)
+      );
+    case SAVE_NOTEBOOKS:
+      const stateToBeSave = state.toJS();
+      // Clean whatever is not meant to be saved
+      stateToBeSave.app.notifications = []
+      localStorage.setItem('notebooks', JSON.stringify(stateToBeSave));
+      return state.updateIn(
+        ['app', 'notifications'],
+        (notifications) => notifications.push({message: 'saved', error: false}));
+    
+    case REMOVE_NOTIFICATION:
+    console.log('removing notifications', action.id)
+      return state.updateIn(
+        ['app', 'notifications'],
+        (notifications) => notifications.delete(action.id)
       );
     default:
       return state;

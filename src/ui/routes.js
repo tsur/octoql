@@ -3,6 +3,7 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import { getAsyncInjectors } from 'ui/utils/asyncInjectors';
+import { getRoute } from 'ui/utils/url';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -18,7 +19,7 @@ export default function createRoutes(store) {
 
   return [
     {
-      path: '/',
+      path: `${getRoute('/')}`,
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([import('ui/containers/HomePage')]);
@@ -33,7 +34,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/notebooks/:username/:repository/:notebook',
+      path: `${getRoute('/notebooks/:username/:repository/:notebook')}`,
       name: 'workspace',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -50,7 +51,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '*',
+      path: `${getRoute('*')}`,
       name: 'notfound',
       getComponent(nextState, cb) {
         import('ui/containers/NotFoundPage')

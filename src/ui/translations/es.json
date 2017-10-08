@@ -1,5 +1,10 @@
 {
+  "octoql.components.Footer.home": "Inicio",
+  "octoql.components.Footer.bugs": "Errores",
   "octoql.components.Footer.license": "MIT",
+  "octoql.components.Footer.language": "Idioma",
+  "octoql.components.Footer.themes": "Tema",
+  "octoql.components.Footer.sync": "Guardar",
   "octoql.components.FuzzyFinder.notFound": "Sin resultados",
   "octoql.components.HelperTour.footer.left.message":
     "Usa estas acciones  para acceder a la página principal o reportar errores",
@@ -8,7 +13,7 @@
   "octoql.components.HelperTour.tree.message":
     "Desde esta área podrá acceder a todos sus notebooks organizados por nombre de usuario y repositorio",
   "octoql.components.HomePage.help": "Descubre que puedes hacer pulsado",
-  "octoql.components.HomePage.tutorial": "Pruébalo",
+  "octoql.components.HomePage.tutorial": "Ver mas",
   "octoql.components.HomePage.subheader":
     "El lenguaje de dominio específico para Github",
   "octoql.components.HomePage.header": "OctoQL",
@@ -21,8 +26,10 @@
   "octoql.containers.App.actions.changeLang": "Cambiar Idioma",
   "octoql.containers.App.actions.changeTheme": "Cambiar tema",
   "octoql.containers.App.actions.openNotebook": "Abrir Notebook",
+  "octoql.containers.App.actions.saveNotebooks": "Guardar Notebooks",
   "octoql.containers.WorkSpacePage.title": "Notebook",
   "octoql.containers.ThemeProvider.themes.dark": "Oscuro",
-  "octoql.containers.ThemeProvider.themes.light": "Claro",
-  "octoql.containers.ThemeProvider.themes.monokai": "Monokai"
+  "octoql.containers.ThemeProvider.themes.light": "Clarito",
+  "octoql.containers.ThemeProvider.themes.monokai": "Monokai",
+  "octoql.components.Notifications.saved": "Notebooks Guardados en local!"
 }

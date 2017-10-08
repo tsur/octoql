@@ -15,21 +15,23 @@ import { changeResourceSelected } from 'ui/containers/ResourcesTree/actions';
 import PanelContainer from 'ui/components/PanelContainer';
 import { selectResources, selectResource } from './selectors';
 import messages from './messages';
+import { normalizeRoute } from 'ui/utils/url';
 import { Container, Scroll, Div } from './wrappers';
 
 export class WorkSpacePage extends React.Component {
   componentDidMount() {
     // Doe snot work with routing !!!!!!!!!!!!
     this.props.changeResourceSelected(
-      location.pathname.replace('/notebooks/', '')
+      normalizeRoute(location.pathname).replace('/notebooks/', '')
     );
   }
 
   render() {
     const notebook = getNotebookContent(
       this.props.resources,
-      location.pathname.replace('/notebooks/', '')
+      normalizeRoute(location.pathname).replace('/notebooks/', '')
     );
+    console.log('>>>', notebook);
     return (
       <Div>
         <Container>
@@ -46,7 +48,10 @@ export class WorkSpacePage extends React.Component {
                 panel={panel}
                 key={i}
                 id={i}
-                path={location.pathname.replace('/notebooks/', '')}
+                path={normalizeRoute(location.pathname).replace(
+                  '/notebooks/',
+                  ''
+                )}
               />
             )}
           </Scroll>

@@ -145,7 +145,7 @@ function peg$parse(input, options) {
       peg$c1 = peg$otherExpectation("comment"),
       peg$c2 = "--",
       peg$c3 = peg$literalExpectation("--", false),
-      peg$c4 = function(f, s, w, t) { return {from:f, select:s, where:w, take:t} },
+      peg$c4 = function(f, s, w, t) { return {from:f, select:s, where:w, limit:t} },
       peg$c5 = peg$otherExpectation("From"),
       peg$c6 = "from",
       peg$c7 = peg$literalExpectation("from", true),
@@ -160,9 +160,9 @@ function peg$parse(input, options) {
       peg$c16 = "where",
       peg$c17 = peg$literalExpectation("where", true),
       peg$c18 = function(filters) { return filters; },
-      peg$c19 = peg$otherExpectation("Take"),
-      peg$c20 = "take",
-      peg$c21 = peg$literalExpectation("take", true),
+      peg$c19 = peg$otherExpectation("Limit"),
+      peg$c20 = "limit",
+      peg$c21 = peg$literalExpectation("limit", true),
       peg$c22 = function(t) { return t ? t : 0; },
       peg$c23 = function(w1, w2) { return concat(w1, w2); },
       peg$c24 = ",",
@@ -506,7 +506,7 @@ function peg$parse(input, options) {
             s4 = null;
           }
           if (s4 !== peg$FAILED) {
-            s5 = peg$parsetake();
+            s5 = peg$parselimit();
             if (s5 === peg$FAILED) {
               s5 = null;
             }
@@ -747,7 +747,7 @@ function peg$parse(input, options) {
     return s0;
   }
 
-  function peg$parsetake() {
+  function peg$parselimit() {
     var s0, s1, s2, s3, s4;
 
     peg$silentFails++;
@@ -763,9 +763,9 @@ function peg$parse(input, options) {
       s1 = peg$FAILED;
     }
     if (s1 !== peg$FAILED) {
-      if (input.substr(peg$currPos, 4).toLowerCase() === peg$c20) {
-        s2 = input.substr(peg$currPos, 4);
-        peg$currPos += 4;
+      if (input.substr(peg$currPos, 5).toLowerCase() === peg$c20) {
+        s2 = input.substr(peg$currPos, 5);
+        peg$currPos += 5;
       } else {
         s2 = peg$FAILED;
         if (peg$silentFails === 0) { peg$fail(peg$c21); }

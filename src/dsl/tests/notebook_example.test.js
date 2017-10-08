@@ -8,7 +8,7 @@ describe('notebook example', function() {
     const query = `-- Press Enter+Shift To Run
     from tsur/octoql
     where assigned == me
-    take 5`;
+    limit 5`;
     const response = {
       from: { user: 'tsur', repo: 'octoql' },
       select: null,
@@ -16,7 +16,7 @@ describe('notebook example', function() {
         filters: [{ field: 'assigned', filter: '==', value: 'me' }],
         groups: []
       },
-      take: 5
+      limit: 5
     };
     expect(Parser.parse(query)).toEqual(response);
   });
@@ -25,7 +25,7 @@ describe('notebook example', function() {
     from tsur/octoql
     select title
     where assigned == me
-    take 5
+    limit 5
     `;
     const response = {
       from: { user: 'tsur', repo: 'octoql' },
@@ -34,7 +34,7 @@ describe('notebook example', function() {
         filters: [{ field: 'assigned', filter: '==', value: 'me' }],
         groups: []
       },
-      take: 5
+      limit: 5
     };
     expect(Parser.parse(query)).toEqual(response);
   });
@@ -53,7 +53,7 @@ describe('notebook example', function() {
         ],
         groups: ['and']
       },
-      take: null
+      limit: null
     };
     expect(Parser.parse(query)).toEqual(response);
   });
@@ -71,7 +71,7 @@ describe('notebook example', function() {
         ],
         groups: ['and']
       },
-      take: null
+      limit: null
     };
     expect(Parser.parse(query)).toEqual(response);
   });
@@ -89,7 +89,7 @@ describe('notebook example', function() {
         ],
         groups: ['or']
       },
-      take: null
+      limit: null
     };
     expect(Parser.parse(query)).toEqual(response);
   });

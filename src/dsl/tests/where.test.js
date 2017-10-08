@@ -7,7 +7,7 @@ describe('where statement', function() {
   const whereResponse = {
     from: { user: 'user', repo: 'repo' },
     select: null,
-    take: null
+    limit: null
   };
 
   it('should fail(throw) if where has non right operator', function() {
