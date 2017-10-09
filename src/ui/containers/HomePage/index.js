@@ -16,6 +16,7 @@ import { platformKeySymbols } from 'ui/utils/helper';
 import Octicon from 'react-octicon';
 import Logo from 'ui/components/Logo';
 import messages from './messages';
+import Ribbon from 'ui/components/Ribbon';
 import { getRoute } from 'ui/utils/url';
 import {
   Container,
@@ -138,6 +139,7 @@ export default class HomePage extends React.Component {
             </Intro> */}
           </MessageCentered>
         </MessageContainer>
+        <Ribbon />
       </Container>
     );
   }

@@ -31,7 +31,6 @@ export class WorkSpacePage extends React.Component {
       this.props.resources,
       normalizeRoute(location.pathname).replace('/notebooks/', '')
     );
-    console.log('>>>', notebook);
     return (
       <Div>
         <Container>

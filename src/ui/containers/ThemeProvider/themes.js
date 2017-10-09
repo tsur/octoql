@@ -57,6 +57,13 @@ export const dark = {
     iconColor: 'rgb(226, 192, 141)',
     iconColorHover: 'rgb(226, 192, 141)',
   },
+  ribbon: {
+    bgColor: '#373636',
+    color: '#7d7d7d',
+    textShadow: '0 -.08em rgba(0, 0, 0, 0.5)',
+    shadow: '0 .15em .23em 0 rgba(0, 0, 0, 0.5)',
+    image: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15))',
+  }
 };
 export const monokai = {
   app: {
@@ -117,6 +124,13 @@ export const monokai = {
     iconColor: 'rgb(226, 192, 141)',
     iconColorHover: 'rgb(226, 192, 141)',
   },
+  ribbon: {
+    bgColor: '#161719',
+    color: '#7d7d7d',
+    textShadow: '0 -.08em rgba(0, 0, 0, 0.5)',
+    shadow: '0 .15em .23em 0 rgba(0, 0, 0, 0.5)',
+    image: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15))',
+  }
 };
 export const light = {
   app: {
@@ -177,4 +191,11 @@ export const light = {
     iconColor: '#979797',
     iconColorHover: 'rgba(255, 255, 255, 0.8)',
   },
+  ribbon: {
+    bgColor: '#fffdfd',
+    color: '#a6a6a6',
+    shadow: 'none',
+    textShadow: 'none',
+    image: 'none',
+  }
 };
