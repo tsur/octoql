@@ -52,6 +52,11 @@ export const dark = {
     colorItem: '#d9dbde',
     colorHint: '#d7dae0',
   },
+  tour: {
+    bgColor: 'rgba(39, 41, 44, 0.9)',
+    iconColor: 'rgb(226, 192, 141)',
+    iconColorHover: 'rgb(226, 192, 141)',
+  },
 };
 export const monokai = {
   app: {
@@ -107,6 +112,11 @@ export const monokai = {
     colorItem: '#d9dbde',
     colorHint: '#d7dae0',
   },
+  tour: {
+    bgColor: '#373636',
+    iconColor: 'rgb(226, 192, 141)',
+    iconColorHover: 'rgb(226, 192, 141)',
+  },
 };
 export const light = {
   app: {
@@ -161,5 +171,10 @@ export const light = {
     colorTextbox: '#9b9b9b',
     colorItem: '#9b9b9b',
     colorHint: '#9b9b9b',
+  },
+  tour: {
+    bgColor: '#ececec',
+    iconColor: '#979797',
+    iconColorHover: 'rgba(255, 255, 255, 0.8)',
   },
 };
