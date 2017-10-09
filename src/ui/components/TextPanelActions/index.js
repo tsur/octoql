@@ -27,7 +27,7 @@ class PanelActions extends React.Component {
           <P
             disabled={!this.props.removable}
             onClick={() =>
-              this.props.removePanel(this.props.id, this.props.path)}
+              this.props.removable && this.props.removePanel(this.props.id, this.props.path)}
           >
             <Icon name="remove-close" small /> Remove Panel
           </P>

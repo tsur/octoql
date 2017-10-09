@@ -43,7 +43,9 @@ export const Overlay = styled.div`
     right: 0;
     bottom: 0;
     z-index: 0;
-    background-color: #1d1f21;
+    background-color: ${(props) => 
+      (props.theme && props.theme.fuzzyFinder.bgColor ? 
+        props.theme.fuzzyFinder.bgColor : '#1d1f21')};
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 0 0 6px 6px;
     box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.4);
@@ -75,8 +77,12 @@ export const TextBox = styled.input`
   height: 2.5em;
   cursor: pointer;
   outline: none;
-  color: #d9dbde;
-  background-color: rgba(0, 0, 0, 0.6);
+  color: ${(props) => 
+    (props.theme && props.theme.fuzzyFinder.colorTextbox ? 
+      props.theme.fuzzyFinder.colorTextbox : '#d9dbde')};
+  background-color: ${(props) => 
+    (props.theme && props.theme.fuzzyFinder.bgColorTextbox ? 
+      props.theme.fuzzyFinder.bgColorTextbox : 'rgba(0, 0, 0, 0.6)')};
   cursor: -webkit-image-set(
         url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAL0lEQVQoz2NgCD3x//9/BhBYBWdhgFVAiVW4JBFKGIa4AqD0//9D3pt4I4tAdAMAHTQ/j5Zom30AAAAASUVORK5CYII=')
           1x
@@ -86,8 +92,12 @@ export const TextBox = styled.input`
 
   &:focus {
     border: 2px solid rgba(115, 201, 144, 0.7);
-    color: rgba(115, 201, 144, 0.7);
-    -webkit-text-fill-color: #d9dbde;
+    color: ${(props) => 
+      (props.theme && props.theme.fuzzyFinder.colorTextbox ? 
+        props.theme.fuzzyFinder.colorTextbox : 'rgba(115, 201, 144, 0.7)')};
+    -webkit-text-fill-color: ${(props) => 
+      (props.theme && props.theme.fuzzyFinder.colorTextbox ? 
+        props.theme.fuzzyFinder.colorTextbox : 'rgba(115, 201, 144, 0.7)')};
   }
 
   &::selection {
@@ -96,8 +106,12 @@ export const TextBox = styled.input`
 `;
 
 export const Results = styled.ol`
-  border: 1px solid #111314;
-  background-color: #222426;
+  border: ${(props) => 
+    (props.theme && props.theme.fuzzyFinder.border ? 
+      props.theme.fuzzyFinder.border : '1px solid #111314')};
+  background-color: ${(props) => 
+    (props.theme && props.theme.fuzzyFinder.bgColorItem ? 
+      props.theme.fuzzyFinder.bgColorItem : '#222426')};
   position: relative;
   overflow-y: auto;
   max-height: 312px;
@@ -105,14 +119,19 @@ export const Results = styled.ol`
   padding: 0;
   list-style: none;
   cursor: default;
+  border-bottom: none;
 `;
 
-const item = `
+const item = (props) => `
   font-weight: normal;
-  color: #d9dbde;
+  color: ${
+    (props.theme && props.theme.fuzzyFinder.colorItem ? 
+      props.theme.fuzzyFinder.colorItem : '#d9dbde')};
   padding: 12px 1em;
   line-height: 2em;
-  border-bottom: 1px solid #111314;
+  border-bottom: ${
+    (props.theme && props.theme.fuzzyFinder.border ? 
+      props.theme.fuzzyFinder.border : '1px solid #111314')};
   user-drag: none;
   user-select: none;
   -moz-user-select: none;
@@ -147,13 +166,15 @@ const itemActived = `
     content: "\f03a";
   }
 `;
-const itemSelected = `
-  background-color: #303337;
+const itemSelected = (props) => `
+  background-color: ${
+    (props.theme && props.theme.fuzzyFinder.bgColorItemActive ? 
+      props.theme.fuzzyFinder.bgColorItemActive : '#303337')};
 `;
 
 export const ResultsItem = styled.li`
-  ${item} ${(props) => (props.actived ? itemActived : '')} ${(props) =>
-    props.selected ? itemSelected : ''};
+  ${(props) => item(props)} ${(props) => (props.actived ? itemActived : '')} ${(props) =>
+    props.selected ? itemSelected(props) : ''};
 `;
 
 export const HintContainer = styled.div`float: right;`;
@@ -171,8 +192,12 @@ export const Hint = styled.kbd`
   letter-spacing: 0.1em;
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(0, 0, 0, 0.2);
-  color: #d7dae0;
+  background-color: ${(props) => 
+    (props.theme && props.theme.fuzzyFinder.bgColorHint ? 
+      props.theme.fuzzyFinder.bgColorHint : 'rgba(0, 0, 0, 0.2)')};
+  color: ${(props) => 
+    (props.theme && props.theme.fuzzyFinder.colorHint ? 
+      props.theme.fuzzyFinder.colorHint : '#d7dae0')};
 `;
 
 export const NoResults = styled.li`
@@ -180,6 +205,9 @@ export const NoResults = styled.li`
   background-color: transparent;
   color: inherit;
   border: none;
+  border-bottom: ${(props) => 
+    (props.theme && props.theme.fuzzyFinder.border ? 
+      props.theme.fuzzyFinder.border : '1px solid #111314')};
 `;
 
 // FormattedMessage does not pass className,

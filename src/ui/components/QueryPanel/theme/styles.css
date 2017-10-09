@@ -9,13 +9,13 @@
  */
 
 /* Style active line */
-.cm-s-talo .CodeMirror-activeline {
+/* .cm-s-talo .CodeMirror-activeline {
   background: #161719 !important;
-}
+} */
 /* Style active line number */
 .cm-s-talo
-  .CodeMirror-activeline
-  .CodeMirror-activeline-gutter
+  /* .CodeMirror-activeline
+  .CodeMirror-activeline-gutter */
   .CodeMirror-linenumber {
   color: #ddd;
   background: #161719 !important;
@@ -126,7 +126,7 @@
   background: none;
 }
 .cm-s-talo .CodeMirror-activeline {
-  background: rgba(100, 100, 100, 0.1); /* rgba(226, 192, 141, 0.1); */
+  /* background: rgba(100, 100, 100, 0.1);  rgba(226, 192, 141, 0.1); */
 }
 .cm-s-talo .CodeMirror-activeline-background {
   background: rgba(100, 100, 100, 0.1); /* rgba(226, 192, 141, 0.1); */

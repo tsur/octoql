@@ -69,6 +69,7 @@ class ReactMediumEditor extends React.Component {
     }
 
     return React.createElement(tag, {
+      className: 'mousetrap',
       onBlur: (event) => props.onSave(this.medium.getContent(0)),
       ...props,
     });

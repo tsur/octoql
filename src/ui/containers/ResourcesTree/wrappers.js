@@ -69,14 +69,16 @@ const TreeList3 = styled.ol`
     position: absolute;
   }
 `;
-const selected = `
+const selected = (props) => `
   &::before {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     height: 25px;
-    background-color: #27292c;
+    background-color: ${props.theme && props.theme.sidebar.selected
+        ? props.theme.sidebar.selected
+        : '#27292c'};
   }
 
   & * {
@@ -93,13 +95,13 @@ const TreeItem = styled.li`
     content: '';
     position: absolute;
   }
-  ${(props) => (props.selected === true ? selected : '')};
+  ${(props) => (props.selected === true ? selected(props) : '')};
 `;
-const TreeItem2 = styled.li`${(props) => (props.selected ? selected : '')};`;
+const TreeItem2 = styled.li`${(props) => (props.selected ? selected(props) : '')};`;
 const TreeItem3 = styled.li`
   margin-left: 22px;
   color: #e2c08d;
-  ${(props) => (props.selected ? selected : '')};
+  ${(props) => (props.selected ? selected(props) : '')};
 `;
 const collapsed = `
 &::before {

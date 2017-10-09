@@ -30,7 +30,9 @@ export const QueryContainer = styled.div`
 `;
 
 export const Menu = styled.div`
-  background: rgba(39, 41, 44, 0.9);
+  background: ${(props) => 
+    (props.theme && props.theme.workspace.actionsPanel.bgColor ? 
+      props.theme.workspace.actionsPanel.bgColor : 'rgba(39, 41, 44, 0.9)')};
   color: #a3a8ae;
   border-radius: 5px;
   z-index: 999999;

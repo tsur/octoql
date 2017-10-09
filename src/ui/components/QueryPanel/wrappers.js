@@ -30,12 +30,13 @@ export const Container = styled.div`
 
 // UNCOMMENT ALL BELOW TO SET A BACKGROUND IN QUERY PANELS
 export const EditorContainer = styled.div`
-  //padding: 2px;
-  // background-color: rgba(255, 255, 255, 0.1);
-  //border-radius: 5px;
   color: grey;
   width: 100%;
   position: relative;
+  .cm-s-talo .CodeMirror-activeline {
+    background: ${(props) =>
+      props.theme && props.theme.workspace.activeLine ? props.theme.workspace.activeLine : 'rgba(100, 100, 100, 0.1)'}; !important;
+  }
 `;
 
 export const Loading = styled.div`

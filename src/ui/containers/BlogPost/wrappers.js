@@ -89,7 +89,10 @@ export const Nav = styled.h3`
   border-bottom: ${(props) =>
     props.actived ? '1px dotted rgba(255, 255, 255, 0.5)' : 'none'};
   &:hover {
-    color: rgba(255, 255, 255, 0.9);
+    color: ${(props) =>
+      props.theme && props.theme.blog.sectionsHoverColor
+        ? props.theme.blog.sectionsHoverColor
+        : 'rgba(255, 255, 255, 0.9)'};
   }
 `;
 
