@@ -30,5 +30,6 @@
   "octoql.containers.ThemeProvider.themes.dark": "Dark",
   "octoql.containers.ThemeProvider.themes.light": "Light",
   "octoql.containers.ThemeProvider.themes.monokai": "Monokai",
-  "octoql.components.Notifications.saved": "Notebooks were saved locally"
+  "octoql.components.Notifications.saved": "Notebooks were saved locally",
+  "octoql.components.Ribbon.forkme": "Fork me on Github"
 }

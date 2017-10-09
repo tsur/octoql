@@ -4,7 +4,7 @@
 *
 */
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import styled from 'styled-components';
 
 const A = styled.a`
@@ -95,13 +95,18 @@ const A = styled.a`
 `;
 
 
-function Ribbon(props) {
+function Ribbon(props, context) {
+  const text = context.intl
+  .formatMessage({ id: 'octoql.components.Ribbon.forkme' });
+
   return (
-    <A target="_blank" href="https://github.com/tsur/octoql" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</A>
-    
+    <A target="_blank" href="https://github.com/tsur/octoql" data-ribbon={text} title={text}>{text}</A>
   );
 }
 
 Ribbon.propTypes = {};
+Ribbon.contextTypes = {
+  intl: PropTypes.object.isRequired,
+};
 
 export default Ribbon;
