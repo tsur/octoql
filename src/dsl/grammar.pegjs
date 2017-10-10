@@ -33,16 +33,16 @@ singleLineComment
 query
   = comment? f:from s:select? w:where? t:limit? { return {from:f, select:s, where:w, limit:t} }
 
-from "From Statement"
+from "From Statement (i.e. from username/repository)"
   = ws* "from"i ws+ user:word '/' repo:word { return {user, repo}; }
 
-select "Select Statement"
+select "Select Statement (i.e. select field1, field2, field3, ..."
   = ws+ "select"i ws+ fields:list_words { return fields; }
 
-where "Where Statement"
+where "Where Statement (i.e. where condition1 or condition2 and condition3) "
   = ws+ "where"i ws+ filters:list_filters { return filters; }
 
-limit "Limit Statement"
+limit "Limit Statement (i.e. limit 5)"
   = ws+ "limit"i ws+ t:digit { return t ? t : 0; }
 
 list_words

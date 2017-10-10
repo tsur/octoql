@@ -5,6 +5,11 @@ import { TextContainer, Div, TextIcon, Icon, Menu, P } from './wrappers';
 import { createTextPanel, createQueryPanel, removePanel } from './actions';
 
 class PanelActions extends React.Component {
+
+  // shouldComponentUpdate(){
+  //   return false;
+  // }
+
   render() {
     return (
       <TextContainer>

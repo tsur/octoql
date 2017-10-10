@@ -44,6 +44,7 @@ const initialState = persistedStore ? fromJS(JSON.parse(persistedStore)) : fromJ
         example: {
           panels: [
             {
+              id:1,
               type: 'text',
               content: '<h1>OctoQL Tutorial Notebook</h1>',
               removable: false,
@@ -55,38 +56,42 @@ const initialState = persistedStore ? fromJS(JSON.parse(persistedStore)) : fromJ
             //   removable: false,
             // },
             {
+              id:2,
               type: 'text',
               content: 'Query 1: What do I need to work in today ?',
               removable: false,
             },
             {
+              id:3,
               type: 'query',
               content: `-- Press Shift+Enter To Run
-from tsur/octoql
-limit 5`,
+from tsur/octoql`,
               removable: false,
             },
             {
+              id:4,
               type: 'text',
               content: 'Query 2: Too much information ... just a quick view',
               removable: false,
             },
             {
+              id:5,
               type: 'query',
               content: `-- Press Shift+Enter To Run
 from tsur/octoql
 select title
-where state == "open"
 limit 5`,
               removable: false,
             },
             {
+              id:6,
               type: 'text',
               content:
                 'Query 3: Something really urgent that requires my attention ?',
               removable: false,
             },
             {
+              id:7,
               type: 'query',
               content: `-- Press Shift+Enter To Run
 from tsur/octoql
@@ -94,11 +99,13 @@ where labels contains "urgent" and labels not contains "merged"`,
               removable: false,
             },
             {
+              id:8,
               type: 'text',
               content: 'Query 4: These issues could be fixed later ...',
               removable: false,
             },
             {
+              id:9,
               type: 'query',
               content: `-- Press Shift+Enter To Run
 from tsur/octoql
@@ -106,11 +113,13 @@ where labels not contains "urgent" and labels not contains "merged"`,
               removable: false,
             },
             {
+              id:10,
               type: 'text',
               content: 'Query 5: These issues could be closed ...',
               removable: false,
             },
             {
+              id:11,
               type: 'query',
               content: `-- Press Shift+Enter To Run
 from tsur/octoql
@@ -145,6 +154,7 @@ function createPath(pathRoute, localState) {
     ? {
       panels: [
         {
+          id: window.performance.now(),
           type: 'text',
           content: '<h1>Notebook Title ...</h1>',
         },
@@ -186,6 +196,7 @@ function appReducer(state = initialState, action) {
             action.id + 1,
             0,
             fromJS({
+              id: window.performance.now(),
               type: 'text',
               content: null,
               removable: true,
@@ -200,6 +211,7 @@ function appReducer(state = initialState, action) {
             action.id + 1,
             0,
             fromJS({
+              id: window.performance.now(),
               type: 'query',
               content: null,
               removable: true,
@@ -215,6 +227,7 @@ function appReducer(state = initialState, action) {
           )
       );
     case REMOVE_PANEL:
+      console.log(state.toJS(), action.id)
       return state.updateIn(
         ['resources'].concat(action.path.split('/')).concat(['panels']),
         (panels) => panels.delete(action.id)

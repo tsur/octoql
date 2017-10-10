@@ -34,6 +34,11 @@ class QueryPanel extends React.Component {
       issues: [],
     };
   }
+
+  // shouldComponentUpdate(){
+  //   return false;
+  // }
+
   componentWillMount() {
     /* Global Key Bindings */
 
@@ -119,7 +124,7 @@ class QueryPanel extends React.Component {
       const githubIssues = await fetchGithubIssues(this.editor.getValue());
       this.toggleEditor();
       this.setState({ issues: githubIssues, loading: false });
-      console.log('Running notebook', this.props.query);
+      // console.log('Running notebook', this.props.query);
     } catch (error) {
       // print error
       this.toggleEditor();

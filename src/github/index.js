@@ -59,7 +59,7 @@ export default function getGithubIssues(query) {
   return new Promise(async (resolve, reject) => {
     try {
       const { from, select, where, limit } = parse(query);
-      console.log('parse >>>', from, select, where, limit);
+      // console.log('parse >>>', from, select, where, limit);
       const whereFilter = computeFilters(where);
       const issuesResponse = await fetch(
         `${API_URL}/${from.user}/${from.repo}/issues`

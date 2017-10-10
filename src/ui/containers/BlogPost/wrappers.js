@@ -96,6 +96,10 @@ export const Nav = styled.h3`
   }
 `;
 
+export const A = styled.a`
+  color:inherit;
+`;
+
 export const Div = styled.div`
   display: ${(props) => (props.visible ? 'block' : 'none')};
 `;

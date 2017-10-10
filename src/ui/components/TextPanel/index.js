@@ -6,38 +6,45 @@ import TextPanelActions from 'ui/components/TextPanelActions';
 import { updatePanel } from 'ui/components/TextPanelActions/actions';
 import { Container, TextContainer } from './wrappers';
 
-function TextPanel(props) {
-  const defaultTextPanel = 'Insert query description here ...';
-  // const toolbar = ['bold', 'italic', 'underline', 'strikethrough', 'orderedlist', 'indent', 'outdent', 'h1', 'h2', 'anchor'];
-  const toolbar = [
-    'bold',
-    'italic',
-    'underline',
-    'strikethrough',
-    'h1',
-    'h2',
-    'anchor',
-    'katex',
-  ];
+// const toolbar = ['bold', 'italic', 'underline', 'strikethrough', 'orderedlist', 'indent', 'outdent', 'h1', 'h2', 'anchor'];
+const defaultTextPanel = 'Insert query description here ...';
+const toolbar = [
+  'bold',
+  'italic',
+  'underline',
+  'strikethrough',
+  'h1',
+  'h2',
+  'anchor',
+  'katex',
+];
 
-  return (
-    <Container>
-      <TextContainer>
-        <MediumEditorComponent
-          onSave={(text) => props.updatePanel(props.id, props.path, text)}
-          tag="div"
-          text={props.panel.content || defaultTextPanel}
-          options={{ spellcheck: false, toolbar: { buttons: toolbar } }}
+class TextPanel extends React.Component {
+
+  // shouldComponentUpdate(){
+  //   return false;
+  // }
+
+  render(){ 
+    return (
+      <Container>
+        <TextContainer>
+          <MediumEditorComponent
+            onSave={(text) => this.props.updatePanel(this.props.id, this.props.path, text)}
+            tag="div"
+            text={this.props.panel.content || defaultTextPanel}
+            options={{ spellcheck: false, toolbar: { buttons: toolbar } }}
+          />
+        </TextContainer>
+        <TextPanelActions
+          panel="text"
+          removable={this.props.panel.removable}
+          id={this.props.id}
+          path={this.props.path}
         />
-      </TextContainer>
-      <TextPanelActions
-        panel="text"
-        removable={props.panel.removable}
-        id={props.id}
-        path={props.path}
-      />
-    </Container>
-  );
+      </Container>
+    );
+  }
 }
 
 TextPanel.propTypes = {

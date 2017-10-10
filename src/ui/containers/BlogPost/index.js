@@ -18,6 +18,7 @@ import {
   ContainerSwitcher,
   Nav,
   Div,
+  A,
 } from './wrappers';
 
 class BlogPost extends React.Component {
@@ -73,7 +74,7 @@ class BlogPost extends React.Component {
               problems within the context a domain expert would expect to.
             </p>
             <p>
-              In our first post, we made a general introduction to this topic,
+              In our <A target="_blank" href="https://valo.io/blog/post/domain-specific-languages-dsl">first post</A>, we made a general introduction to this topic,
               but did not get our hands into the job. This time we'll make it by
               designing and implementing an interesting case of a domain
               specific language: OctoQL.
@@ -128,7 +129,7 @@ class BlogPost extends React.Component {
               parser generator library that produces fast parsers with excellent
               error reporting. There are other good alternatives as parboiled2
               for Scala users or ANTLR for Java users. You can find more
-              PEG-based solutions at http://bford.info/packrat/
+              PEG-based solutions at <A target="_blank" href="http://bford.info/packrat/">http://bford.info/packrat/</A>
             </p>
           </Div>
           <Div visible={this.state.chapter === 'grammar'}>
@@ -146,7 +147,7 @@ class BlogPost extends React.Component {
               analysis, trying things out and spending time gathering
               information about the needed requirements from the domain experts.
               The Grammar rules will come and get improved over and over again
-              out of the final, end domain expert users feedback.
+              out of the final end domain expert users feedback.
             </p>
             <p>
               In our example, the domain becomes the issues we deal with in our
@@ -162,7 +163,7 @@ class BlogPost extends React.Component {
             </p>
             <p>
               In order to make that query to work we need some processing
-              involving the tokens we are really interested in and what to do
+              which involves the tokens we are really interested in and what to do
               with them. Both jobs can be handled by using a lexer and a parser.
               Next is a possible grammar for our yet tiny "from" DSL in which we
               define several rules.
@@ -180,17 +181,20 @@ word "A word"
   = w:[a-zA-Z0-9\_\-]+ 
   { return join(w) }
 
-ws "Control Chars"
+ws "Non alpha-numeric Chars"
   = [ \\n\\r\\t]
 `}
             </pre>
             <p>
+              We're basically spearheading the grammar to run the fetchGithubIssues function  whenever the input we will feed our grammar with matches the from DSL grammar rule. This rule looks for something that looks as an ignored case "from" literal string (thats what the lowercase i after from string means) followed by a word, an slash separator and a word once more.
+            </p>{' '}
+            <p>
               To match both the user along the repository we define the "word"
-              rule. We would like to be errors tolerant up to a certain point so
-              we'll ignore all control characters in between the most important
+              rule. This rule uses a regex to catch up alpha-numeric characters along some extra common symbols as underscore or dash symbols. We would like to be errors tolerant up to a certain point so
+              we'll ignore all non alphanumeric or control characters in between the most important
               tokens. This is managed by the "ws" rule. Finally, to glue it all
               together we create a "from" rule which will return the info we
-              need to later retrieve the Github issues in the "dsl" rule.
+              need to later retrieve the Github issues in the "dsl" rule. Go now back to the first query in the example notebook and make a typo, for example type in something as "from $tsur/ octoql". The parser will complaint and will let you know about it since the input does not match the expected rule.
             </p>{' '}
             <p>
               Note we're also using a custom function named join in the "word"
@@ -237,8 +241,8 @@ integer
               query will not run, so the user will not get any Github issues
               back. This is an example where implementing our own lexer and
               parser might be a better choice. We could still run the query even
-              if the user provided a wrong limit value. But for our purposes,
-              the PEG.js error reporting output is great.
+              if the user provided a wrong limit value or to provide better error messages. But for our purposes,
+              the PEG.js error reporting is enough.
             </p>
             <p>
               Those grammar rules are ok, but they do not actually add any great
@@ -257,27 +261,58 @@ integer
             <pre>
               {`  from <username>/<repository> 
   limit <number>
-  where <condition>`}
+  where <conditions>
+  
+  ...
+
+  where "Where Statement"
+  = ws+ "where"i ws+ conditions:conditions_list 
+  { return conditions; }
+  
+  conditions_list
+  = conditions_list ws+ b:bool ws+ condition / 
+  c:condition 
+  { return {b, c}; }
+  
+  condition
+  = l:operand ws* o:operator ws* r:operand 
+  { return {l, o, r}; }
+
+  bool
+  = "and"i / "or"i
+
+  operator
+  = "contains"i / "not contains"i
+
+  operand
+  = w:word
+  { return w; } 
+  `}
             </pre>
             <p>
-              From here on, we could start adding some other interesting rules
+              The where rule conditions require operators and operands to work. Our where rule is no more than just a sequence of conditions grouped into logical operators. The "conditions_list" rule has a recursive nature which enables to concatenate logical conditions. Those conditions are made of a left operand which will match a issue field name (i.e. title) along the right operand and an operator "contains" or "not contains". The information gathered at the where rule need to be used later on in the fetchGithubIssues function to filter the issues list and retrieve only those matching the conditions. Feel free to <A target="_blank" href="https://github.com/Tsur/octoql/blob/unstable/src/github/index.js">check it</A> out.
+            </p>
+            <p>
+              So far we were able to run a short intro and make a simple grammar to work out and it was great to get introduced to the topic but we just touched it superficially. From here on, we could start adding some other interesting rules
               to our grammar as "select" to specify what issues properties as
-              title, labels, content, ... are we interested in, the "order by"
+              title, labels, etc. are we interested in, the "order by"
               rule to order issues by a field, or the "group by" to make
-              aggregations and more powerful analysis over our Gitub issues. The
+              aggregations and more powerful analysis over our Gitub issues. We could focus on improving the grammar itself, to provide better error reporting, support comments and other great features. The
               possibilities are many and it will depend in a great extend on the
               users needs and what they demands as domain experts. Feel free to
-              check the final grammar here and to contribute if interested.
+              check the <A target="_blank" href="https://github.com/Tsur/octoql/blob/unstable/src/dsl/grammar.pegjs">final grammar</A> here and to contribute if interested.
             </p>
             <p>Happy dsling ^^</p>
           </Div>
           <Div visible={this.state.chapter === 'references'}>
             <p>
-              Below you will find some of the best resources references you can
-              find in the DSL world.
+              Below you will find some great resources references to help you get introduced into the DSL world.
             </p>
-            <p>* DSL in Action</p>
-            <p>...</p>
+            <p>* Debasish Ghosh. DSLs in Action, 2011.<A target="_blank" href="http://debasishg.blogspot.com.es/2011/02/why-i-made-dsls-in-action-polyglotic.html">http://debasishg.blogspot.com.es/2011/02/why-i-made-dsls-in-action-polyglotic.html</A></p> 
+            <p>* Martin Fowler with Rebecca Parsons. Domain Specific Languages, 2010. <A target="_blank" href="https://martinfowler.com/dsl.html">https://martinfowler.com/dsl.html</A></p>
+            <p>* Parboiled 2 <A target="_blank" href="https://github.com/sirthias/parboiled2">https://github.com/sirthias/parboiled2</A></p>
+            <p>* PEG.js <A target="_blank" href="https://pegjs.org/">https://pegjs.org/</A></p>
+            <p>* Groovy official docs, <A target="_blank" href="http://docs.groovy-lang.org/docs/latest/html/documentation/core-domain-specific-languages.html">http://docs.groovy-lang.org/docs/latest/html/documentation/core-domain-specific-languages.html</A></p>
           </Div>
         </GlobalScroll>
       </Container>

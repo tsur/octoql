@@ -19,15 +19,33 @@ import { normalizeRoute } from 'ui/utils/url';
 import { Container, Scroll, Div } from './wrappers';
 
 export class WorkSpacePage extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
+
   componentDidMount() {
-    // Doe snot work with routing !!!!!!!!!!!!
+    // Does not work with routing !!!!!!!!!!!!
     this.props.changeResourceSelected(
       normalizeRoute(location.pathname).replace('/notebooks/', '')
     );
+    this.scrollPosition = this.scrollElement.scrollTop;
+  }
+
+  componentWillReceiveProps(){
+    this.scrollPosition = this.scrollElement.scrollTop;
+    // this.notebook = getNotebookContent(
+    //   this.props.resources,
+    //   normalizeRoute(location.pathname).replace('/notebooks/', '')
+    // );
+  }
+
+  componentDidUpdate(){
+    this.scrollElement.scrollTop = this.scrollPosition;
   }
 
   render() {
-    const notebook = getNotebookContent(
+    this.notebook = getNotebookContent(
       this.props.resources,
       normalizeRoute(location.pathname).replace('/notebooks/', '')
     );
@@ -35,17 +53,17 @@ export class WorkSpacePage extends React.Component {
       <Div>
         <Container>
           <Helmet
-            title={`${notebook.title} - OctoQL Notebook`}
+            title={`${this.notebook.title} - OctoQL Notebook`}
             meta={[
               { name: 'description', content: 'Description of WorkSpacePage' },
             ]}
           />
-          <Scroll>
-            {notebook.panels.map((panel, i) =>
+          <Scroll innerRef={(scroll) => this.scrollElement = scroll}>
+            {this.notebook.panels.map((panel, i) =>
               <PanelContainer
                 className="talo-editor"
                 panel={panel}
-                key={i}
+                key={panel.id}
                 id={i}
                 path={normalizeRoute(location.pathname).replace(
                   '/notebooks/',

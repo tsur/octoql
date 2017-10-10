@@ -31,5 +31,6 @@
   "octoql.containers.ThemeProvider.themes.light": "Light",
   "octoql.containers.ThemeProvider.themes.monokai": "Monokai",
   "octoql.components.Notifications.saved": "Notebooks were saved locally",
-  "octoql.components.Ribbon.forkme": "Fork me on Github"
+  "octoql.components.Ribbon.forkme": "Fork me on Github",
+  "octoql.components.ResourcesTree.notebook.addAction": "Create Notebook"
 }

@@ -5,6 +5,10 @@ import { QueryContainer, Icon, Menu, P } from './wrappers';
 import { createTextPanel, createQueryPanel, removePanel } from './actions';
 
 class PanelActions extends React.Component {
+  // shouldComponentUpdate(){
+  //   return false;
+  // }
+  
   render() {
     const MenuElement = (
       <Menu>
