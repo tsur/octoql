@@ -39,7 +39,7 @@ function HelperTour() {
         message={messages.footerRightMessage}
         direction="down"
         bottom="7"
-        right="215"
+        right="222"
       />
       <div className={'overlay'} />
     </Container>

@@ -10,6 +10,10 @@ export default defineMessages({
     id: 'octoql.containers.App.actions.changeLang',
     defaultMessage: 'Change Language',
   },
+  changeTheme: {
+    id: 'octoql.containers.App.actions.changeTheme',
+    defaultMessage: 'Change Theme',
+  },
   addNotebook: {
     id: 'octoql.containers.App.actions.addNotebook',
     defaultMessage: 'Add Notebook',
@@ -17,6 +21,10 @@ export default defineMessages({
   openNotebook: {
     id: 'octoql.containers.App.actions.openNotebook',
     defaultMessage: 'Open Notebook',
+  },
+  saveNotebooks: {
+    id: 'octoql.containers.App.actions.saveNotebooks',
+    defaultMessage: 'Save Notebooks',
   },
   englishLang: {
     id: 'octoql.components.LanguageProvider.eng',

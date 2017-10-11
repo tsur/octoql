@@ -9,37 +9,72 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import BlogPost from 'ui/containers/BlogPost';
 import { getNotebookContent } from 'ui/utils/resources';
 import { changeResourceSelected } from 'ui/containers/ResourcesTree/actions';
+import PanelContainer from 'ui/components/PanelContainer';
 import { selectResources, selectResource } from './selectors';
 import messages from './messages';
-import { Container } from './wrappers';
+import { normalizeRoute } from 'ui/utils/url';
+import { Container, Scroll, Div } from './wrappers';
 
 export class WorkSpacePage extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
+
   componentDidMount() {
-    // Doe snot work with routing !!!!!!!!!!!!
+    // Does not work with routing !!!!!!!!!!!!
     this.props.changeResourceSelected(
-      location.pathname.replace('/notebooks/', '')
+      normalizeRoute(location.pathname).replace('/notebooks/', '')
     );
+    this.scrollPosition = this.scrollElement.scrollTop;
+  }
+
+  componentWillReceiveProps(){
+    this.scrollPosition = this.scrollElement.scrollTop;
+    // this.notebook = getNotebookContent(
+    //   this.props.resources,
+    //   normalizeRoute(location.pathname).replace('/notebooks/', '')
+    // );
+  }
+
+  componentDidUpdate(){
+    this.scrollElement.scrollTop = this.scrollPosition;
   }
 
   render() {
-    const notebook = getNotebookContent(
+    this.notebook = getNotebookContent(
       this.props.resources,
-      location.pathname.replace('/notebooks/', '')
+      normalizeRoute(location.pathname).replace('/notebooks/', '')
     );
     return (
-      <Container>
-        <Helmet
-          title="OctoQL Workspace"
-          meta={[
-            { name: 'description', content: 'Description of WorkSpacePage' },
-          ]}
-        />
-        <h1>
-          {notebook ? notebook.title : 'No Notebook found'}
-        </h1>
-      </Container>
+      <Div>
+        <Container>
+          <Helmet
+            title={`${this.notebook.title} - OctoQL Notebook`}
+            meta={[
+              { name: 'description', content: 'Description of WorkSpacePage' },
+            ]}
+          />
+          <Scroll innerRef={(scroll) => this.scrollElement = scroll}>
+            {this.notebook.panels.map((panel, i) =>
+              <PanelContainer
+                className="talo-editor"
+                panel={panel}
+                key={panel.id}
+                id={i}
+                path={normalizeRoute(location.pathname).replace(
+                  '/notebooks/',
+                  ''
+                )}
+              />
+            )}
+          </Scroll>
+        </Container>
+        <BlogPost />
+      </Div>
     );
   }
 }

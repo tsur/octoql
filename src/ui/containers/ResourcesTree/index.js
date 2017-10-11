@@ -7,10 +7,11 @@ import { push } from 'react-router-redux';
 import HotKeys from 'ui/utils/hotkeys';
 import PubSub from 'ui/utils/pubsub';
 import * as Resources from 'ui/utils/resources';
-import { changeResourceSelected, addTreeResource } from './actions';
+import { getRoute } from 'ui/utils/url';
+import { changeResourceSelected, addTreeResource, saveNotebooks } from './actions';
 import { selectResources, selectResource } from './selectors';
 import messages from './messages';
-import { Container, GlobalScroll, Tree } from './wrappers';
+import { Container, GlobalScroll, Tree, Actions } from './wrappers';
 
 class ResourcesTree extends React.Component {
   componentWillMount() {
@@ -19,10 +20,22 @@ class ResourcesTree extends React.Component {
       HotKeys.ADD_NOTEBOOK.keys,
       this.addNotebookShortcut.bind(this)
     );
+    this.props.bindShortcut(
+      HotKeys.OPEN_NOTEBOOK.keys,
+      this.openNotebookShortcut.bind(this)
+    );
+    this.props.bindShortcut(
+      HotKeys.SAVE_NOTEBOOKS.keys,
+      this.saveNotebooksShortcut.bind(this)
+    );
     // Subscribe to fuzzy finder lang messages
     this.pubSubToken = PubSub.subscribe(
       PubSub.topics.FUZZY_FINDER_NOTEBOOK_ITEM_ADDED,
       this.addNotebookAction.bind(this)
+    );
+    this.pubSubToken = PubSub.subscribe(
+      PubSub.topics.FUZZY_FINDER_NOTEBOOK_ITEM_OPENED,
+      this.openNotebookAction.bind(this)
     );
   }
 
@@ -42,9 +55,19 @@ class ResourcesTree extends React.Component {
     // Request the fuzzy finder
     PubSub.publish(PubSub.topics.FUZZY_FINDER_REQUIRED, {
       enableCustomSelection: true,
-      filter: this.props.resourceSelected,
+      filter: this.props.resourceSelected || 'username/repository/example',
       noMatchesText: messages.addNotebook,
       topic: PubSub.topics.FUZZY_FINDER_NOTEBOOK_ITEM_ADDED,
+    });
+  }
+
+  openNotebookFuzzyFinder() {
+    // Request the fuzzy finder
+    PubSub.publish(PubSub.topics.FUZZY_FINDER_REQUIRED, {
+      enableCustomSelection: true,
+      filter: this.props.resourceSelected || 'username/repository/example',
+      noMatchesText: messages.addNotebook,
+      topic: PubSub.topics.FUZZY_FINDER_NOTEBOOK_ITEM_OPENED,
     });
   }
 
@@ -52,6 +75,24 @@ class ResourcesTree extends React.Component {
     this.addNotebookFuzzyFinder();
     // Prevent default
     return HotKeys.ADD_NOTEBOOK.default;
+  }
+
+  openNotebookShortcut() {
+    this.openNotebookFuzzyFinder();
+    // Prevent default
+    return HotKeys.SAVE_NOTEBOOKS.default;
+  }
+
+  saveNotebooksShortcut() {
+    this.props.saveNotebooks();
+    // Prevent default
+    return HotKeys.ADD_NOTEBOOK.default;
+  }
+
+  openNotebookAction(topic, resource) {
+    if (Resources.isNotebook(resource)) {
+      this.props.changeRoute(`/notebooks/${resource}`);
+    }
   }
 
   addNotebookAction(topic, resource) {
@@ -139,6 +180,7 @@ class ResourcesTree extends React.Component {
             selected={this.props.resourceSelected}
           />
         </GlobalScroll>
+        <Actions onClick={(event) => this.addNotebookShortcut(event)} />
       </Container>
     );
   }
@@ -151,13 +193,15 @@ ResourcesTree.propTypes = {
   addTreeResource: React.PropTypes.func,
   changeResourceSelected: React.PropTypes.func,
   changeRoute: React.PropTypes.func,
+  saveNotebooks: React.PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   changeResourceSelected: (resource) =>
     dispatch(changeResourceSelected(resource)),
   addTreeResource: (resource) => dispatch(addTreeResource(resource)),
-  changeRoute: (url) => dispatch(push(url)),
+  changeRoute: (url) => dispatch(push(getRoute(url))),
+  saveNotebooks: () => dispatch(saveNotebooks()),
 });
 
 const mapStateToProps = createStructuredSelector({

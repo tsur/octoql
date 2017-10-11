@@ -6,14 +6,13 @@ const OfflinePlugin = require('offline-plugin');
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
-  entry: [
-    path.join(process.cwd(), 'src/ui/app.js'),
-  ],
+  entry: [path.join(process.cwd(), 'src/ui/app.js')],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js',
+    publicPath: '/octoql/',
   },
 
   plugins: [
@@ -69,6 +68,7 @@ module.exports = require('./webpack.base.babel')({
   ],
 
   performance: {
-    assetFilter: (assetFilename) => !(/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)),
+    assetFilter: (assetFilename) =>
+      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
 });

@@ -12,3 +12,5 @@
 export const DEFAULT_LOCALE = 'en';
 export const CHANGE_RESOURCE_SELECTED = 'octoql/App/CHANGE_RESOURCE_SELECTED';
 export const ADD_RESOURCE = 'octoql/App/ADD_RESOURCE';
+export const SAVE_NOTEBOOKS = 'octoql/App/SAVE_NOTEBOOKS';
+export const REMOVE_NOTIFICATION = 'octoql/App/REMOVE_NOTIFICATION';

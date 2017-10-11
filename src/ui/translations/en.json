@@ -1,18 +1,36 @@
 {
+  "octoql.components.Footer.home": "Home",
+  "octoql.components.Footer.bugs": "Bugs",
   "octoql.components.Footer.license": "MIT",
+  "octoql.components.Footer.language": "Language",
+  "octoql.components.Footer.themes": "Themes",
+  "octoql.components.Footer.sync": "Save",
   "octoql.components.FuzzyFinder.notFound": "No matches found",
-  "octoql.components.HelperTour.footer.left.message": "Use the actions below to access home section or to report bugs",
-  "octoql.components.HelperTour.footer.right.message": "Use the actions below to change the application language, the theme or to save notebooks",
-  "octoql.components.HelperTour.tree.message": "From this area you may access all notebooks organized by user and repository",
+  "octoql.components.HelperTour.footer.left.message":
+    "Use the actions below to access home section or to report bugs",
+  "octoql.components.HelperTour.footer.right.message":
+    "Use the actions below to change the application language, the theme or to save notebooks",
+  "octoql.components.HelperTour.tree.message":
+    "From this area you may access all notebooks organized by user and repository",
   "octoql.components.HomePage.help": "Discover all you can do with",
+  "octoql.components.HomePage.tutorial": "Try it",
   "octoql.components.HomePage.subheader": "The Github Query Language",
   "octoql.components.HomePage.header": "OctoQL",
   "octoql.components.LanguageProvider.eng": "English",
   "octoql.components.LanguageProvider.es": "Spanish",
   "octoql.components.NotFoundPage.header": "Notebook not found.",
-  "octoql.components.ResourcesTree.notebook.add": "Type the notebook you want to add with the format <username|organization>/<repository>/<notebook_title> (i.e. tsur/octoql/notebook1). This can also be a valid Github URL (i.e. https://github.com/tsur/octoql)",
+  "octoql.components.ResourcesTree.notebook.add":
+    "Type the notebook you want to add with the format <username>/<repository>/<notebook_title> (for example, \"tsur/octoql/notebook1\"). This can also be a valid Github URL (https://github.com/tsur/octoql)",
   "octoql.containers.App.actions.addNotebook": "Add Notebook",
   "octoql.containers.App.actions.changeLang": "Change Language",
+  "octoql.containers.App.actions.changeTheme": "Change Theme",
   "octoql.containers.App.actions.openNotebook": "Open Notebook",
-  "octoql.containers.WorkSpacePage.title": "Notebook"
+  "octoql.containers.App.actions.saveNotebooks": "Save Notebooks",
+  "octoql.containers.WorkSpacePage.title": "Notebook",
+  "octoql.containers.ThemeProvider.themes.dark": "Dark",
+  "octoql.containers.ThemeProvider.themes.light": "Light",
+  "octoql.containers.ThemeProvider.themes.monokai": "Monokai",
+  "octoql.components.Notifications.saved": "Notebooks were saved locally",
+  "octoql.components.Ribbon.forkme": "Fork me on Github",
+  "octoql.components.ResourcesTree.notebook.addAction": "Create Notebook"
 }

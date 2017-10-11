@@ -1,6 +1,7 @@
 import {
   CHANGE_RESOURCE_SELECTED,
   ADD_RESOURCE,
+  SAVE_NOTEBOOKS,
 } from 'ui/containers/App/constants';
 
 /**
@@ -28,5 +29,18 @@ export function addTreeResource(resource) {
   return {
     type: ADD_RESOURCE,
     resource,
+  };
+}
+
+/**
+ * Changes the input field of the form
+ *
+ * @param  {name} name The new text of the input field
+ *
+ * @return {object}    An action object with a type of CHANGE_USERNAME
+ */
+export function saveNotebooks() {
+  return {
+    type: SAVE_NOTEBOOKS,
   };
 }

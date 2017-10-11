@@ -37,7 +37,10 @@ export const Container = styled.div`
   text-align: center;
   -webkit-transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
-  color: rgb(226, 192, 141);
+  color: ${(props) =>
+    props.theme && props.theme.tour.iconColor
+      ? props.theme.tour.iconColor
+      : 'rgb(226, 192, 141)'};
   ${(props) => (props.left ? Position('left', props.left) : '')} ${(props) =>
       props.right ? Position('right', props.right) : ''} ${(props) =>
       props.top ? Position('top', props.top) : ''} ${(props) =>
@@ -113,7 +116,10 @@ const visible = `
 `;
 
 export const ToolTip = styled.div`
-  background: rgba(39, 41, 44, 0.9);
+  background: ${(props) =>
+    props.theme && props.theme.tour.bgColor
+      ? props.theme.tour.bgColor
+      : 'rgba(39, 41, 44, 0.9)'};
   bottom: 100%;
   color: #a3a8ae;
   display: inline-table;
@@ -147,9 +153,7 @@ export const ToolTip = styled.div`
   }
 
   & :after {
-    border-left: solid transparent 10px;
-    border-right: solid transparent 10px;
-    border-top: solid var(--bgColor) 10px;
+    border: none;
     bottom: -10px;
     content: " ";
     height: 0;

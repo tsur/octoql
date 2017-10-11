@@ -11,9 +11,15 @@ export const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0;
-  background-color: #161719;
+  background-color: ${(props) =>
+    props.theme && props.theme.footer.bgColor
+      ? props.theme.footer.bgColor
+      : '#161719'};
   height: 3.0em;
-  border-top: 1px solid #27292c; /*rgba(115, 170, 100, 0.3);*/
+  border-top: ${(props) =>
+    props.theme && props.theme.footer.border
+      ? props.theme.footer.border
+      : '1px solid #27292c;'}; /*rgba(115, 170, 100, 0.3);*/
 `;
 
 export const StatusBar = styled.div`
@@ -32,7 +38,7 @@ export const StatusBar = styled.div`
 // StatusBarLeft is same as StatusBarRight, but it is intended
 export const StatusBarLeft = styled.div`
   & span {
-    margin: auto 4px;
+    margin: auto 3px;
     cursor: pointer;
 
     & em {
@@ -48,7 +54,7 @@ export const StatusBarLeft = styled.div`
 
 export const StatusBarRight = styled.div`
   & span {
-    margin: auto 4px;
+    margin: auto 3px;
     cursor: pointer;
 
     & em {
@@ -65,8 +71,12 @@ export const StatusBarRight = styled.div`
 export const StatusBarImportantIcon = styled.span`color: #6494ed;`;
 export const StatusBarPrimaryIcon = styled.span`color: rgb(226, 192, 141);`;
 export const StatusBarSecondaryIcon = styled.span`color: #73c990;`;
-export const A = styled(Link)`
+export const Route = styled(Link)`
   text-decoration: none;
   color: #6494ed;
   font-style: normal;
 `;
+export const A = styled.a`
+text-decoration: none;
+color: inherit;
+font-style: normal;`;

@@ -23,6 +23,7 @@ import Footer from 'ui/components/Footer';
 import HelperTour from 'ui/components/HelperTour';
 import BlogPost from 'ui/containers/BlogPost';
 import FuzzyFinder from 'ui/containers/FuzzyFinder';
+import Notifications from 'ui/containers/Notifications';
 import HotKeys from 'ui/utils/hotkeys';
 import PubSub from 'ui/utils/pubsub';
 import { Section, Article } from './wrappers';
@@ -58,6 +59,11 @@ class App extends React.Component {
           hint: HotKeys.CHANGE_LANG.keys,
         },
         {
+          value: HotKeys.CHANGE_THEME.keys,
+          title: messages.changeTheme.id,
+          hint: HotKeys.CHANGE_THEME.keys,
+        },
+        {
           value: HotKeys.ADD_NOTEBOOK.keys,
           title: messages.addNotebook.id,
           hint: HotKeys.ADD_NOTEBOOK.keys,
@@ -66,6 +72,11 @@ class App extends React.Component {
           value: HotKeys.OPEN_NOTEBOOK.keys,
           title: messages.openNotebook.id,
           hint: HotKeys.OPEN_NOTEBOOK.keys,
+        },
+        {
+          value: HotKeys.SAVE_NOTEBOOKS.keys,
+          title: messages.saveNotebooks.id,
+          hint: HotKeys.SAVE_NOTEBOOKS.keys,
         },
       ],
       topic: PubSub.topics.ACTION_SELECTED,
@@ -98,10 +109,11 @@ class App extends React.Component {
         <Article>
           <ResourcesTree />
           {React.Children.toArray(this.props.children)}
-          <BlogPost />
+          {/* <BlogPost /> */}
         </Article>
         <Footer />
         <FuzzyFinder />
+        <Notifications />
         <HelperTour />
       </Section>
     );
