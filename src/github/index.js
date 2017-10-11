@@ -27,7 +27,7 @@ const operations = {
     return a.includes(b);
   },
   'not contains': (a, b, f) =>
-    (f === 'labels' ? a.map((l) => l.name) : a).includes(b),
+    !(f === 'labels' ? a.map((l) => l.name) : a).includes(b),
   '<=': (a, b, f) => {
     if (f === 'closed_at' || f === 'created_at') {
       const date1 = moment(a);
