@@ -95,7 +95,7 @@ limit 5`,
               type: 'query',
               content: `-- Press Shift+Enter To Run
 from tsur/octoql
-select title
+select title, labels
 where labels contains "urgent" and labels not contains "merged"`,
               removable: false,
             },
