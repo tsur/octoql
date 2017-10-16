@@ -15,6 +15,8 @@ const DEFAULT_SELECT = [
   'title',
   'state',
 ];
+const DEFAULT_USER='tsur';
+const DEFAULT_REPO='octoql';
 
 const operations = {
   and: (a, b) => a && b,
@@ -55,11 +57,15 @@ const groupFilters = (computedFilters, groups) => {
   );
 };
 
-export default function getGithubIssues(query) {
+export default function getGithubIssues(query, opt = {}) {
   return new Promise(async (resolve, reject) => {
     try {
-      const { from, select, where, limit } = parse(query);
-      // console.log('parse >>>', from, select, where, limit);
+      let { from, select, where, limit } = parse(query);
+      if(!from) {
+        from = {};
+        from.user = opt.user || DEFAULT_USER;       
+        from.repo = opt.repo || DEFAULT_REPO;       
+      }
       const whereFilter = computeFilters(where);
       const issuesResponse = await fetch(
         `${API_URL}/${from.user}/${from.repo}/issues`
@@ -72,16 +78,6 @@ export default function getGithubIssues(query) {
         .map((issue) => pick(issue, select || DEFAULT_SELECT));
 
       resolve(limit ? take(issues, limit) : issues);
-      // setTimeout(
-      //   () =>
-      //     resolve([
-      //       { title: 'Issue1', labels: ['label1'] },
-      //       { title: 'Issue2', labels: ['label2'] },
-      //       { title: 'Issue3', labels: ['label3'] },
-      //       { title: 'Issue4', labels: ['label4'] },
-      //     ]),
-      //   2000
-      // );
     } catch (error) {
       reject(error);
     }

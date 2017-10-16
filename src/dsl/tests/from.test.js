@@ -4,19 +4,15 @@
 import Parser from '../parser';
 
 describe('from statement', function() {
-  const fromResponse = {
-    from: { user: 'user', repo: 'repo' },
-    select: null,
-    where: null,
-    limit: null
-  };
+  const fromResponse = {from: { user: 'user', repo: 'repo' } };
 
-  it('should fail(throw) if no user or repo is given', function() {
+  it('should fail(throw) if no user not.or repo is given', function() {
     expect(() => Parser.parse('from')).toThrow();
   });
 
-  it('should fail(throw) if no whitespace before from', function() {
-    expect(() => Parser.parse('fromuser/repo')).toThrow();
+  it('should not fail(throw) if no whitespace before from', function() {
+    expect(() => Parser.parse('fromuser/repo')).not.toThrow();
+    expect(Parser.parse('fromuser/repo')).toEqual(fromResponse);
   });
 
   it('should fail(throw) if no repo', function() {

@@ -11,7 +11,6 @@ describe('notebook example', function() {
     limit 5`;
     const response = {
       from: { user: 'tsur', repo: 'octoql' },
-      select: null,
       where: {
         filters: [{ field: 'assigned', filter: '==', value: 'me' }],
         groups: []
@@ -45,7 +44,6 @@ describe('notebook example', function() {
     `;
     const response = {
       from: { user: 'tsur', repo: 'octoql' },
-      select: null,
       where: {
         filters: [
           { field: 'labels', filter: 'contains', value: 'urgent' },
@@ -53,7 +51,6 @@ describe('notebook example', function() {
         ],
         groups: ['and']
       },
-      limit: null
     };
     expect(Parser.parse(query)).toEqual(response);
   });
@@ -63,7 +60,6 @@ describe('notebook example', function() {
     where labels not contains "urgent" and labels not contains "merged"`;
     const response = {
       from: { user: 'tsur', repo: 'octoql' },
-      select: null,
       where: {
         filters: [
           { field: 'labels', filter: 'not contains', value: 'urgent' },
@@ -71,7 +67,6 @@ describe('notebook example', function() {
         ],
         groups: ['and']
       },
-      limit: null
     };
     expect(Parser.parse(query)).toEqual(response);
   });
@@ -81,7 +76,6 @@ describe('notebook example', function() {
     where labels contains "merged" or creation_date <= 2.months.ago`;
     const response = {
       from: { user: 'tsur', repo: 'octoql' },
-      select: null,
       where: {
         filters: [
           { field: 'labels', filter: 'contains', value: 'merged' },
@@ -89,7 +83,6 @@ describe('notebook example', function() {
         ],
         groups: ['or']
       },
-      limit: null
     };
     expect(Parser.parse(query)).toEqual(response);
   });

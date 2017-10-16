@@ -6,8 +6,6 @@ import Parser from '../parser';
 describe('select statement', function() {
   const selectResponse = {
     from: { user: 'user', repo: 'repo' },
-    where: null,
-    limit: null
   };
 
   it('should fail(throw) if select has no fields', function() {
