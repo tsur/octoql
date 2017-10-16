@@ -6,8 +6,6 @@ import Parser from '../parser';
 describe('limit statement', function() {
   const limitResponse = {
     from: { user: 'user', repo: 'repo' },
-    select: null,
-    where: null
   };
 
   it('should fail(throw) if limit has non numeric value', function() {

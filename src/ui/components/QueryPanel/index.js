@@ -121,7 +121,8 @@ class QueryPanel extends React.Component {
     try {
       this.setState({ loading: true, error: null, issues: [] });
       this.toggleEditor();
-      const githubIssues = await fetchGithubIssues(this.editor.getValue());
+      const [user, repo] = this.props.path.split('/');
+      const githubIssues = await fetchGithubIssues(this.editor.getValue(), {user, repo});
       this.toggleEditor();
       this.setState({ issues: githubIssues, loading: false });
       // console.log('Running notebook', this.props.query);
