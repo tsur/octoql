@@ -223,8 +223,8 @@ limit "Limit"
   { return limitIssuesTo }
 
 positiveNumber
-= d1:[1-9] d2:([0-9]*) 
-{ return parseInt(\`$\{d1\}$\{join(d2)\}\`) }
+  = d1:[1-9] d2:([0-9]*) 
+  { return parseInt(\`$\{d1\}$\{join(d2)\}\`) }
 `}
             </pre>
             <p>
@@ -296,8 +296,11 @@ positiveNumber
               to our grammar as "select" to specify what issues properties as
               title, labels, etc. are we interested in, the "order by"
               rule to order issues by a field, or the "group by" to make
-              aggregations and more powerful analysis over our Gitub issues. We could focus on improving the grammar itself, to provide better error reporting, support comments and other great features. The possibilities are endless and it will depend to a great extent on the users' needs and what they demand as domain experts. Feel free to
-              check the current<A target="_blank" href="https://github.com/Tsur/octoql/blob/unstable/src/dsl/grammar.pegjs">grammar</A> here and to contribute if interested. whether spreading cool new ideas, coding them, fixing bugs or helping with translations, sure you can contribute to improve and make it better!  
+              aggregations and more powerful analysis over our Gitub issues. We could focus on improving the grammar itself, to provide better error reporting, support comments and other great features.
+            </p>
+            <p> 
+              The possibilities are endless and it will depend to a great extent on the users' needs and what they demand as domain experts. Feel free to
+              check the current <A target="_blank" href="https://github.com/Tsur/octoql/blob/unstable/src/dsl/grammar.pegjs">grammar</A> here and to contribute if interested. whether spreading cool new ideas, coding them, fixing bugs or helping with translations, sure you can contribute to improve and make it better!  
             </p>
             <p>Happy dsling ^^</p>
           </Div>
