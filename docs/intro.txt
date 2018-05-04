@@ -1,0 +1,5 @@
+Data is probably the most valuable and requested asset all over the world. We humans are eager to consume it and are constantly looking for ever-complex, accurate, specific data sets to increase our knowledge stock and keep it up to date.
+
+Whether application logs aggregation analysis, trading market rates comparison or simply the weather forecast analysis, general-purpose languages cannot fully provide users with the best tools for interacting, retrieving and solving domain related problems within the context a domain expert would expect to.
+
+In our first post, we made a general introduction to this topic, but did not get our hands into the job. This time we'll make it by designing and implementing an interesting case of a domain specific language: OctoQL.

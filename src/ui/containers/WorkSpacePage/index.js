@@ -7,32 +7,26 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import BlogPost from 'ui/containers/BlogPost';
 import { getNotebookContent } from 'ui/utils/resources';
 import { changeResourceSelected } from 'ui/containers/ResourcesTree/actions';
 import PanelContainer from 'ui/components/PanelContainer';
+import { normalizeRoute, normalizeLocation } from 'ui/utils/url';
 import { selectResources, selectResource } from './selectors';
-import messages from './messages';
-import { normalizeRoute } from 'ui/utils/url';
 import { Container, Scroll, Div } from './wrappers';
 
 export class WorkSpacePage extends React.Component {
 
-  constructor(props){
-    super(props);
-  }
-
   componentDidMount() {
     // Does not work with routing !!!!!!!!!!!!
     this.props.changeResourceSelected(
-      normalizeRoute(location.pathname).replace('/notebooks/', '')
+      normalizeRoute(normalizeLocation()).replace('/notebooks/', '')
     );
     this.scrollPosition = this.scrollElement.scrollTop;
   }
 
-  componentWillReceiveProps(){
+  componentWillReceiveProps() {
     this.scrollPosition = this.scrollElement.scrollTop;
     // this.notebook = getNotebookContent(
     //   this.props.resources,
@@ -40,14 +34,14 @@ export class WorkSpacePage extends React.Component {
     // );
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.scrollElement.scrollTop = this.scrollPosition;
   }
 
   render() {
     this.notebook = getNotebookContent(
       this.props.resources,
-      normalizeRoute(location.pathname).replace('/notebooks/', '')
+      normalizeRoute(normalizeLocation()).replace('/notebooks/', '')
     );
     return (
       <Div>
@@ -65,7 +59,7 @@ export class WorkSpacePage extends React.Component {
                 panel={panel}
                 key={panel.id}
                 id={i}
-                path={normalizeRoute(location.pathname).replace(
+                path={normalizeRoute(normalizeLocation()).replace(
                   '/notebooks/',
                   ''
                 )}

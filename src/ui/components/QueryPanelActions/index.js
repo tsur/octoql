@@ -24,6 +24,11 @@ class PanelActions extends React.Component {
         >
           <Icon name="terminal" small /> Create Query Panel
         </P>
+        {/*<P
+          onClick={() => this.runPanel(this.props.id, this.props.path)}
+        >
+          <Icon name="triangle-right" small /> Run Query
+        </P>*/}
         <P
           disabled={!this.props.removable}
           onClick={() => this.props.removable && this.props.removePanel(this.props.id, this.props.path)}

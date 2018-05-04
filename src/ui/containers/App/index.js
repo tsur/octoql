@@ -21,7 +21,6 @@ import mouseTrapCore from 'mousetrap';
 import ResourcesTree from 'ui/containers/ResourcesTree';
 import Footer from 'ui/components/Footer';
 import HelperTour from 'ui/components/HelperTour';
-import BlogPost from 'ui/containers/BlogPost';
 import FuzzyFinder from 'ui/containers/FuzzyFinder';
 import Notifications from 'ui/containers/Notifications';
 import HotKeys from 'ui/utils/hotkeys';

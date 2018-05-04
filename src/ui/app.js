@@ -12,7 +12,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
+import { applyRouterMiddleware, Router, browserHistory, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import 'sanitize.css/sanitize.css';
@@ -52,12 +52,13 @@ import createRoutes from './routes';
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
-const store = configureStore(initialState, browserHistory);
+const routerHistory = process.env && process.env.NODE_ENV === 'desktop-production' ? hashHistory : browserHistory;
+const store = configureStore(initialState, routerHistory);
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
 // must be provided for resolving how to retrieve the "route" in the state
-const history = syncHistoryWithStore(browserHistory, store, {
+const history = syncHistoryWithStore(routerHistory, store, {
   selectLocationState: makeSelectLocationState(),
 });
 
@@ -76,8 +77,8 @@ const render = (messages) => {
             history={history}
             routes={rootRoute}
             render={// Scroll to top when going to a new page, imitating default browser
-            // behaviour
-            applyRouterMiddleware(useScroll())}
+              // behaviour
+              applyRouterMiddleware(useScroll())}
           />
         </LanguageProvider>
       </ThemeProvider>
@@ -86,14 +87,14 @@ const render = (messages) => {
   );
 };
 
-// Hot reloadable translation json files
-if (module.hot) {
-  // modules.hot.accept does not accept dynamic dependencies,
-  // have to be constants at compile-time
-  module.hot.accept('./i18n', () => {
-    render(translationMessages);
-  });
-}
+// // Hot reloadable translation json files
+// if (process.env.NODE_ENV === 'development' && module.hot) {
+//   // modules.hot.accept does not accept dynamic dependencies,
+//   // have to be constants at compile-time
+//   module.hot.accept('./i18n', () => {
+//     render(translationMessages);
+//   });
+// }
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {

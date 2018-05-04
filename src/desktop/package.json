@@ -1,0 +1,17 @@
+{
+  "name": "octoql",
+  "version": "1.0.0",
+  "description":
+    "The Octo Query Language, a DSL to interact with Github issues",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsur/octoql.git"
+  },
+  "author": "Zuri Pabon <zurisadai.pabon@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tsur/octoql/issues"
+  },
+  "homepage": "https://github.com/tsur/octoql#readme"
+}

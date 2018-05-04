@@ -17,27 +17,21 @@
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
-    "extract-intl":
-      "babel-node --presets latest,stage-0 -- ./internals/scripts/extract-intl.js",
+    "extract-intl": "babel-node --presets latest,stage-0 -- ./internals/scripts/extract-intl.js",
     "npmcheckversion": "node ./internals/scripts/npmcheckversion.js",
     "preinstall": "npm run npmcheckversion",
     "postinstall": "npm run build:dll",
     "prebuild": "npm run build:clean",
-    "build":
-      "cross-env NODE_ENV=production PUBLIC_URL=/octoql webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress",
+    "build": "cross-env NODE_ENV=production PUBLIC_URL=/octoql webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress",
     "build:clean": "npm run test:clean && rimraf ./build",
     "build:dll": "node ./internals/scripts/dependencies.js",
     "build:parser": "pegjs -o src/dsl/parser.js src/dsl/grammar.pegjs",
     "start": "cross-env NODE_ENV=development node server",
-    "start:tunnel":
-      "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
-    "start:prod":
-      "npm run test && npm run build && cross-env NODE_ENV=production node server",
-    "clean:all":
-      "npm run analyze:clean && npm run test:clean && npm run build:clean",
+    "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
+    "start:prod": "npm run test && npm run build && cross-env NODE_ENV=production node server",
+    "clean:all": "npm run analyze:clean && npm run test:clean && npm run build:clean",
     "generate": "plop --plopfile internals/generators/index.js",
-    "lint:js":
-      "eslint --ignore-path .eslintignore --ignore-pattern internals/scripts",
+    "lint:js": "eslint --ignore-path .eslintignore --ignore-pattern internals/scripts",
     "lint": "npm run lint:js -- . ",
     "pretest": "npm run test:clean",
     "test:clean": "rimraf ./coverage",
@@ -47,8 +41,10 @@
     "validate": "npm-run-all --parallel lint test build",
     "pregh-pages": "npm run build",
     "gh-pages": "node ./internals/scripts/gh-pages.js",
-    "semantic-release":
-      "semantic-release pre && npm publish && semantic-release post"
+    "prerelease:desktop": "cross-env NODE_ENV=desktop-production webpack --config internals/webpack/webpack.desktop.babel.js --color && cp -r src/desktop/* dist",
+    "release:desktop": "electron-builder",
+    "postrelease:desktop": "rimraf dist",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
     "babel-polyfill": "6.20.0",
@@ -110,6 +106,8 @@
     "circular-dependency-plugin": "2.0.0",
     "coveralls": "2.11.15",
     "css-loader": "0.26.1",
+    "electron": "^2.0.0",
+    "electron-builder": "^20.11.1",
     "enzyme": "2.6.0",
     "eslint": "3.11.1",
     "eslint-config-airbnb": "13.0.0",
@@ -121,6 +119,7 @@
     "eslint-plugin-redux-saga": "0.1.5",
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.6.3",
+    "extract-text-webpack-plugin": "2.x",
     "file-loader": "0.9.0",
     "gh-pages": "^1.0.0",
     "html-loader": "0.4.4",
@@ -157,6 +156,57 @@
       "sanitize.css",
       "react-octicon"
     ],
-    "include": ["core-js", "lodash", "eventsource-polyfill"]
+    "include": [
+      "core-js",
+      "lodash",
+      "eventsource-polyfill"
+    ]
+  },
+  "build": {
+    "appId": "com.octoql",
+    "productName": "OctoQL",
+    "copyright": "Copyright © 2017 ${author}",
+    "win": {
+      "target": [
+        {
+          "target": "msi",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable"
+        }
+      ],
+      "icon": "dist/octoql-icon.ico",
+      "legalTrademarks": "Github"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "deb"
+        },
+        {
+          "target": "zip"
+        }
+      ],
+      "icon": "dist/octoql-icon.ico",
+      "category": "Development"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg"
+        },
+        {
+          "target": "zip"
+        }
+      ],
+      "icon": "dist/octoql-icon.ico"
+    },
+    "directories": {
+      "output": "release",
+      "app": "dist"
+    }
   }
 }

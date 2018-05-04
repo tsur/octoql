@@ -5,4 +5,5 @@ npm-debug.log
 coverage
 dist
 build
+release
 .nyc_output

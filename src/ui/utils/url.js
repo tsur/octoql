@@ -3,6 +3,11 @@ import _ from 'lodash';
 const PUBLIC_URL =
   process.env && process.env.PUBLIC_URL ? process.env.PUBLIC_URL : '';
 
+
+export function normalizeLocation() {
+  return process.env && process.env.NODE_ENV === 'desktop-production' ? location.hash.replace(/#/g, '') : location.pathname;
+}
+
 export function getQueryParams(search) {
   if (!search || _.isEmpty(search.trim()) || !/^[?#]/.test(search)) return {};
   return search.slice(1).split('&').reduce((queryParams, param) => {

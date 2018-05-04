@@ -33,6 +33,12 @@ where labels contains "merged" or creation_date <= 2.months.ago
 
 ```
 
+## Build
+
+To run it locally `yarn && yarn start`
+To build it locally `yarn && yarn build`
+To release it locally `yarn && yarn release:desktop`
+
 ## Contributing
 
 For in-depth project documentation regarding building or testing, move to the [docs](https://github.com/react-boilerplate/react-boilerplate/tree/master/docs) section.  
