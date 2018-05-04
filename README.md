@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-The Octo Query Language, a DSL for fetching Github issues. Try it out [here](https://tsur.github.io/octoql).
+The Octo Query Language, a DSL for fetching Github issues. Try it out [here](https://tsur.github.io/octoql) or download a desktop version from [here](https://github.com/tsur/octoql/releases).
 
 ## Overview
 
@@ -45,4 +45,4 @@ For in-depth project documentation regarding building or testing, move to the [d
 
 ## License
 
-[![MIT License](https://img.shields.io/npm/l/es6-lib-template.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
